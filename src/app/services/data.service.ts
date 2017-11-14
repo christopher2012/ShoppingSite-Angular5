@@ -3,7 +3,7 @@ import { items } from '../../assets/data/item.data';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { Category } from '../model/Category';
+import { Category } from '../model/category';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
@@ -17,11 +17,11 @@ export class DataService {
     private itemsUrl = 'http://localhost:2403/items';
     private categoriesUrl = 'http://localhost:2403/categories';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private httpClient: HttpClient) { }
 
     getItemListOb(): Observable<any[]> {
 
-        return this.http.get<any[]>(this.itemsUrl);
+        return this.httpClient.get<any[]>(this.itemsUrl);
     }
 
     getItemList(): any[] {
@@ -30,7 +30,9 @@ export class DataService {
 
     getCategoryListOb(): Observable<Category[]> {
         return this.http.get(this.categoriesUrl)
-        .map(res => res.j;
+            .map(res => res.json()
+            .map(category => new Category(category.name))
+        );
     }
 
     getCategoryList() {

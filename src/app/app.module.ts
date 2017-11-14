@@ -19,7 +19,12 @@ import { CartItemListComponent } from './components/cart.item.list/cart.item.lis
 import { OrderComponent } from './components/order/order.component';
 import { PriceComponent } from './components/price/price.component';
 
-import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { NouisliderModule } from 'ng2-nouislider';
 
@@ -44,7 +49,9 @@ import { NouisliderModule } from 'ng2-nouislider';
     BrowserModule,
     NgxPaginationModule,
     AppRoutingModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [
   ],

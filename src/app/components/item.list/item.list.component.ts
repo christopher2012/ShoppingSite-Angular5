@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Category } from '../../model/category';
 
 @Component({
     selector: 'app-item-list',
@@ -9,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ItemListComponent implements OnInit {
 
     @Input() itemList;
-    @Input() categorySelected: string[];
+    @Input() categorySelected: Category[];
 
     private pageNumber = 1;
 

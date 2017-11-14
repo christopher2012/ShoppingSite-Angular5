@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Item } from '../../model/item';
+import { Category } from '../../model/category';
 
 @Component({
   providers: [
@@ -14,7 +15,7 @@ export class ShopComponent implements OnInit {
 
   itemList2: Item[];
   itemList = [];
-  categoryList: string[];
+  categoryList: Category[];
   categorySelected = [];
   searchPhrase = '';
 
@@ -29,19 +30,18 @@ export class ShopComponent implements OnInit {
         );
 
     this.dataService.getCategoryListOb()
-        .subscribe(categories => this.categoryList = categories,
-            err => {
-                console.log(err);
-            }
+        .subscribe(category => console.log(category)
         );
 
+        this.dataService.getCategoryListOb()
+          .subscribe(categories => this.categoryList = categories);
   }
 
-  onSelectListView(category: any) {
-    if (category.select) {
-      this.categorySelected.push(category.category);
+  onSelectListView(categoryInfo: any) {
+    if (categoryInfo.select) {
+      this.categorySelected.push(categoryInfo.category);
     } else {
-      const index = this.categorySelected.indexOf(category.category);
+      const index = this.categorySelected.indexOf(categoryInfo.category);
       console.log(index);
       if (index > -1 ) {
         this.categorySelected.splice(index, 1);

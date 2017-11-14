@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Category } from '../../model/category';
+
 
 @Component({
   selector: 'app-category',
@@ -7,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  @Input() category: string;
+  @Input() category: Category;
   @Output() onSelect = new EventEmitter<any>();
   isSelected = false;
 

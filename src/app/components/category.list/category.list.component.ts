@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Category } from '../../model/category';
 
 @Component({
   selector: 'app-category-list',
@@ -9,7 +10,7 @@ export class CategoryListComponent implements OnInit {
 
   constructor() { }
 
-  @Input() categoryList: string[];
+  @Input() categoryList: Category[];
   @Output() onSelectListView = new EventEmitter<any>();
 
   ngOnInit() {

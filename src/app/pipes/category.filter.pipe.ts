@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Category } from '../model/Category';
 
 @Pipe({
   name: 'categoryFilter',
@@ -6,11 +7,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryFilterPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    if (args.length === 0) {
+  transform(value: any, category: Category[]): any {
+    console.log("pipe");
+    console.log(category);
+    if (category.length === 0) {
       return value;
     }
-    return value.filter(item => args.indexOf(item.category) !== -1);
+    return value.filter(item => category.indexOf(item.category) !== -1);
   }
 
 }
