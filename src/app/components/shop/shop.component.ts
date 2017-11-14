@@ -67,4 +67,14 @@ export class ShopComponent implements OnInit {
     this.searchString = searchString;
   }
 
+  onMinValue(minValue: number) {
+    this.minValue = minValue;
+    console.log(minValue);
+  }
+
+  onMaxValue(maxValue) {
+    this.maxValue = maxValue;
+    console.log(maxValue);
+  }
+
 }

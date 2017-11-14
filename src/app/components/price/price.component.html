@@ -2,12 +2,12 @@
     <div class="col-md-6 price-input-min">
         <div class="input-group">
             <span class="input-group-addon">MIN</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" (keyup.enter)="minValue($event)">
         </div>
     </div>
     <div class="col-md-6 price-input-max">
         <div class="input-group">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" (keyup.enter)="maxValue($event)">
             <span class="input-group-addon">MAX</span>
         </div>
     </div>
