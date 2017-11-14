@@ -5,6 +5,6 @@
 </div>
 
 <div>
-    <pagination-controls class='custom-pagin' (pageChange)='pageNumber=$event' previousLabel='' nextLabel=''>
+    <pagination-controls *ngIf='itemList !== undefined' class='custom-pagin' (pageChange)='pageNumber=$event' previousLabel='' nextLabel=''>
     </pagination-controls>
 </div>

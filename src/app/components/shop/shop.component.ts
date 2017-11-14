@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
+import { Item } from '../../model/item';
 
 @Component({
   providers: [
@@ -11,7 +12,8 @@ import { DataService } from '../services/data.service';
 })
 export class ShopComponent implements OnInit {
 
-  itemList: any[];
+  itemList2: Item[];
+  itemList = [];
   categoryList: string[];
   categorySelected = [];
   searchPhrase = '';
@@ -19,8 +21,20 @@ export class ShopComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.itemList = this.dataService.getItemList();
-    this.categoryList = this.dataService.getCategoryList();
+    this.dataService.getItemListOb()
+        .subscribe(items => this.itemList = items,
+            err => {
+                console.log(err);
+            }
+        );
+
+    this.dataService.getCategoryListOb()
+        .subscribe(categories => this.categoryList = categories,
+            err => {
+                console.log(err);
+            }
+        );
+
   }
 
   onSelectListView(category: any) {
