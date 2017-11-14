@@ -16,8 +16,8 @@ export class CategoryListComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelect(category: any) {
-    this.onSelectListView.emit(category);
+  onSelect(categoryInfo: any) {
+    this.onSelectListView.emit(categoryInfo);
   }
 
 }

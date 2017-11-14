@@ -4,6 +4,10 @@ button {
     margin-bottom: 10px;
 }
 
-button:hover {
+.btn:hover {
     background-color: rgb(197, 193, 191);
+}
+
+.btn-primary:hover {
+    background-color: #286090;
 }

@@ -7,9 +7,7 @@ import { Category } from '../model/Category';
 })
 export class CategoryFilterPipe implements PipeTransform {
 
-  transform(value: any, category: Category[]): any {
-    console.log("pipe");
-    console.log(category);
+  transform(value: any, category: string[]): any {
     if (category.length === 0) {
       return value;
     }

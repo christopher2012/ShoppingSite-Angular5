@@ -10,7 +10,8 @@ import { Category } from '../../model/category';
 export class ItemListComponent implements OnInit {
 
     @Input() itemList;
-    @Input() categorySelected: Category[];
+    @Input() categorySelectedNames: string[];
+    @Input() searchString: string;
 
     private pageNumber = 1;
 

@@ -16,8 +16,10 @@ export class ShopComponent implements OnInit {
   itemList2: Item[];
   itemList = [];
   categoryList: Category[];
-  categorySelected = [];
-  searchPhrase = '';
+  categorySelectedNames = [];
+  searchString = '';
+  minValue: number;
+  maxValue: number;
 
   constructor(private dataService: DataService) { }
 
@@ -30,24 +32,39 @@ export class ShopComponent implements OnInit {
         );
 
     this.dataService.getCategoryListOb()
-        .subscribe(category => console.log(category)
+        .subscribe(category => console.log(category),
+        err => {
+          console.log(err);
+        }
         );
 
         this.dataService.getCategoryListOb()
           .subscribe(categories => this.categoryList = categories);
   }
 
-  onSelectListView(categoryInfo: any) {
-    if (categoryInfo.select) {
-      this.categorySelected.push(categoryInfo.category);
+  onSelectListView(category: Category) {
+    if (category.isSelected) {
+      this.categorySelectedNames.push(category.name);
     } else {
-      const index = this.categorySelected.indexOf(categoryInfo.category);
+      const index = this.categorySelectedNames.indexOf(category.name);
       console.log(index);
       if (index > -1 ) {
-        this.categorySelected.splice(index, 1);
+        this.categorySelectedNames.splice(index, 1);
       }
     }
-    console.log(this.categorySelected);
+    console.log(this.categorySelectedNames);
+  }
+
+  clearFilter(): void {
+    this.searchString = '';
+    this.categorySelectedNames = [];
+    for ( const category of this.categoryList ) {
+      category.isSelected = false;
+    }
+  }
+
+  onSearch(searchString: any): void {
+    this.searchString = searchString;
   }
 
 }

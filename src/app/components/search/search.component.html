@@ -1,7 +1,7 @@
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Szukaj">
+  <input #searchID type="text" class="form-control" placeholder="Szukaj" [value]="searchString" (keyup.enter)="search(searchID.value)">
   <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
+      <button class="btn btn-default" type="submit" (click)="search(searchID.value)">
         <i class="glyphicon glyphicon-search"></i>
       </button>
   </div>

@@ -1,4 +1,4 @@
-<div *ngFor='let item of itemList | categoryFilter: categorySelected | paginate: {
+<div *ngFor='let item of itemList | searchFilter: searchString | categoryFilter: categorySelectedNames | paginate: {
         itemsPerPage: 5,
         currentPage: pageNumber }'>
     <app-item [item]='item'></app-item>

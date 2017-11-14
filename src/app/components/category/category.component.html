@@ -1,4 +1,4 @@
-<button class="btn" (click)='select(!isSelected)'
-  [ngClass]='isSelected ? "btn-primary" : "btn"'>
-  {{category}}
+<button class="btn" (click)='select(!category.isSelected)'
+  [ngClass]='category.isSelected ? "btn-primary" : "btn"'>
+  {{category.name}}
 </button>

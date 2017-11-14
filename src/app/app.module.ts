@@ -27,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 import { NouisliderModule } from 'ng2-nouislider';
+import { AdminComponent } from './components/admin/admin.component';
+import { SearchFilterPipe } from './pipes/search.filter.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { NouisliderModule } from 'ng2-nouislider';
     CartItemComponent,
     CartItemListComponent,
     OrderComponent,
-    PriceComponent
+    PriceComponent,
+    AdminComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

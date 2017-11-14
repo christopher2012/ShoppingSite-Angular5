@@ -1,3 +1,3 @@
 export class Category {
-    constructor(private name: string) { }
+    constructor(public name: string, public isSelected = false) { }
 }

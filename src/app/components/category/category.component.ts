@@ -11,13 +11,12 @@ export class CategoryComponent implements OnInit {
 
   @Input() category: Category;
   @Output() onSelect = new EventEmitter<any>();
-  isSelected = false;
 
   constructor() { }
 
   select(select: boolean) {
-      this.isSelected = select;
-      this.onSelect.emit({ 'select': select, 'category': this.category});
+      this.category.isSelected = select;
+      this.onSelect.emit(this.category);
   }
 
   ngOnInit() {

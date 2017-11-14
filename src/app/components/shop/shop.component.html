@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-md-3">
-        <app-search></app-search>
+        <button class="btn" (click)='clearFilter()'>Wyczyść filtr</button>
+        <app-search [searchString]='searchString' (onSearch)='onSearch($event)'></app-search>
         <app-category-list 
             [categoryList]='categoryList'
             (onSelectListView)='onSelectListView($event)'>
@@ -8,6 +9,9 @@
         <app-price></app-price>
     </div>
     <div class="col-md-9" align="center">
-        <app-item-list [itemList]='itemList' [categorySelected]='categorySelected'></app-item-list>
+        <app-item-list [itemList]='itemList' 
+            [categorySelectedNames]='categorySelectedNames'
+            [searchString]='searchString'>
+        </app-item-list>
     </div>
 </div>
