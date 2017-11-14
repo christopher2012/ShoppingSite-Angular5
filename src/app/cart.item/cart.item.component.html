@@ -1,0 +1,14 @@
+<div class='row'>
+    <div class='col-md-12'>
+        <div class='item-desc'>
+        <div class='col-md-9'>
+            <h3>{{cartItem.name}}</h3>
+            <h4>{{cartItem.desc}}</h4>
+        </div>
+        <div class="col-md-3 right-price">
+            <h3>{{cartItem.price | number: '1.2-2' | plnCurrency}}</h3>
+            <button class="btn btn-danger">Usuń z koszyka</button>
+        </div>
+    </div>
+    </div>
+</div>

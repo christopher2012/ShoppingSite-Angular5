@@ -1,0 +1,9 @@
+@import "~nouislider/distribute/nouislider.min.css";
+
+.price-input-max {
+    padding-left: 8px;
+}
+
+.price-input-min {
+    padding-right: 8px;
+}

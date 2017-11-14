@@ -1,0 +1,33 @@
+
+.item-desc {
+    background-color: rgb(238, 238, 238);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    padding-bottom: 12px;
+}
+
+.item-desc:hover {
+    background-color: rgb(197, 193, 191);
+}
+
+.item-desc h3 {
+    display: block;
+    text-align: left;
+}
+
+.item-desc h4 {
+    display: block;
+    text-align: left;
+}
+
+.right-price h3{
+    text-align: right;
+}
+
+.right-price button{
+    float:right;
+    display: block;
+    width: 126px;
+}
