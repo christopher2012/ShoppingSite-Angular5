@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-3 right-price">
             <h3>{{cartItem.price | number: '1.2-2' | plnCurrency}}</h3>
-            <button class="btn btn-danger">Usuń z koszyka</button>
+            <button class="btn btn-danger" (click)='delete($event)'>Usuń z koszyka</button>
         </div>
     </div>
     </div>

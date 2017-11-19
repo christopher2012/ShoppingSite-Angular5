@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CartItem } from '../../model/cart.item';
 
 @Component({
   selector: 'app-cart-item-list',
@@ -7,11 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CartItemListComponent implements OnInit {
 
-  @Input() cartItemList: any[];
+  @Input() cartItemList: CartItem[];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onDelete(cartItem: CartItem) {
+    this.cartItemList.splice(this.cartItemList.indexOf(cartItem), 1);
   }
 
 }

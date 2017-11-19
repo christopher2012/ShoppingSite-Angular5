@@ -1,3 +1,3 @@
 <div>
-  <app-cart-item *ngFor='let cartItem of cartItemList' [cartItem]='cartItem'></app-cart-item>
+  <app-cart-item *ngFor='let cartItem of cartItemList' [cartItem]='cartItem' (onDelete)='onDelete($event)'></app-cart-item>
 </div>

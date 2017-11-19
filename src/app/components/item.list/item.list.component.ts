@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../model/category';
 import { CartDataService } from '../../services/cart.data.service';
 import { Item } from '../../model/item';
+
 @Component({
-    providers: [CartDataService],
     selector: 'app-item-list',
     templateUrl: 'item.list.component.html',
     styleUrls: ['item.list.component.css']

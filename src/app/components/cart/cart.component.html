@@ -1,6 +1,6 @@
 <div>
   <app-cart-item-list [cartItemList]='cartItemList'></app-cart-item-list>
-  <div class="order-comp">
+  <div *ngIf='cartItemList.length > 0' class="order-comp">
     <div class="col-md-3">
       <button routerLink='/order' class="btn btn-success">ZAMÓW</button>
     </div>
