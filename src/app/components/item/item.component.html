@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-3 right-price">
             <h3>{{item.price | number: '1.2-2' | plnCurrency}}</h3>
-            <button class="btn btn-primary"> Dodaj do koszyka</button>
+            <button class="btn btn-primary" (click)=addToCart()> Dodaj do koszyka</button>
         </div>
     </div>
     </div>

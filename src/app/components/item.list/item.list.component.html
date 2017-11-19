@@ -1,7 +1,7 @@
-<div *ngFor='let item of itemList | searchFilter: searchString | categoryFilter: categorySelectedNames | paginate: {
+<div *ngFor='let item of itemList | priceFilter: {"min":minValue, "max":maxValue} | searchFilter: searchString | categoryFilter: categorySelectedNames | paginate: {
         itemsPerPage: 5,
         currentPage: pageNumber }'>
-    <app-item [item]='item'></app-item>
+    <app-item [item]='item' (onAdd)='onAdd($event)'></app-item>
 </div>
 
 <div>

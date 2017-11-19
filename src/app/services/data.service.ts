@@ -20,7 +20,6 @@ export class DataService {
     constructor(private http: Http, private httpClient: HttpClient) { }
 
     getItemListOb(): Observable<any[]> {
-
         return this.httpClient.get<any[]>(this.itemsUrl);
     }
 
