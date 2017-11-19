@@ -2,14 +2,14 @@
   <div class='col-md-6 order-details'>
     <h2>Adress zamieszkania</h2>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Imie i nazwisko">
-      <input type="text" class="form-control" placeholder="Miejscowość">
-      <input type="text" class="form-control" placeholder="Ulica i numer domu">
+      <input type="text" class="form-control" placeholder="Imie i nazwisko" (input)='name=$event.target.value'>
+      <input type="text" class="form-control" placeholder="Miejscowość" (input)='city=$event.target.value'>
+      <input type="text" class="form-control" placeholder="Ulica i numer domu" (input)='street=$event.target.value'>
     </div>
   </div>
 </div>
 <div class="row send-order">
   <div class="col-md-12">
-    <button class="btn btn-success">Zatwierdź zamówienie</button>
+    <button class="btn btn-success" (click)='order($event)'>Zatwierdź zamówienie</button>
   </div>
 </div>

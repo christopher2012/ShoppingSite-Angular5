@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { OrderService } from '../../services/order.service';
+import { CartItem } from '../../model/cart.item';
+import { CartDataService } from '../../services/cart.data.service';
+import { Order } from '../../model/order';
 
 @Component({
+  providers: [OrderService],
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  name: string;
+  city: string;
+  street: string;
 
-  constructor() { }
+  constructor(private orderService: OrderService, private cartDataService: CartDataService) { }
 
   ngOnInit() {
   }
 
-  getErrorMessage(): string {
-    return this.email.hasError('required') ? 'Adres email jest wymagany' :
-      this.email.hasError('email') ? 'Niepoprawny adres email' : '';
+  order(event) {
+    this.orderService.order(new Order(this.name, this.city, this.street, this.cartDataService.cartItemList)).subscribe(
+      response => console.log(response));
   }
-
 }
