@@ -24,7 +24,7 @@ export class ShopComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getItemListOb()
+    this.dataService.getItemListLocal()
         .subscribe(items => this.itemList = items,
             err => {
                 console.log(err);

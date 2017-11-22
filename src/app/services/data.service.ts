@@ -14,12 +14,16 @@ import 'rxjs/add/operator/catch';
 export class DataService {
     itemList = items;
 
-    private itemsUrl = 'http://localhost:2403/items';
-    private categoriesUrl = 'http://localhost:2403/categories';
+    private itemsUrl = 'http://localhost:8080/api/products';
+    private categoriesUrl = 'http://localhost:8080/api/categories';
 
     constructor(private http: Http, private httpClient: HttpClient) { }
 
     getItemListOb(): Observable<any[]> {
+        return this.httpClient.get<any[]>(this.itemsUrl);
+    }
+
+    getItemListLocal(): Observable<any[]> {
         return this.httpClient.get<any[]>(this.itemsUrl);
     }
 

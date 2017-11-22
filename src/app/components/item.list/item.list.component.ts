@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Category } from '../../model/category';
 import { CartDataService } from '../../services/cart.data.service';
 import { Item } from '../../model/item';
@@ -29,5 +29,4 @@ export class ItemListComponent implements OnInit {
         console.log(item);
         this.cartService.addItemToCart(item);
     }
-
 }

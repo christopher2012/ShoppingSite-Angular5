@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row row-custom" align="center">
+      <div class="login-box">
+          <div class="form-login-custom">
+          <h4 class='h4-custom'>Witamy z powrotem!</h4>
+          <input #username type="text" id="userName" class="form-control form-control-custom input-sm chat-input" placeholder="username" />
+
+          <input #password type="text" id="userPassword" class="form-control form-control-custom input-sm chat-input" placeholder="password" />
+
+          <div class="wrapper-custom">
+          <span class="group-btn">     
+              <a (click)='login(username.value, password.value)' class="login-button btn btn-primary btn-md">
+                Zaloguj<i class="fa fa-sign-in sign-custom"></i>
+              </a>
+          </span>
+          </div>
+
+          <h5 class="error-message" *ngIf='isError'>{{errMessage}}</h5>
+          <i *ngIf='isLoading' class="fa fa-spinner fa-spin spinner-custom" style="font-size:24px"></i>
+          </div>
+      
+      </div>
+  </div>
+</div>

@@ -30,6 +30,8 @@ import { NouisliderModule } from 'ng2-nouislider';
 import { AdminComponent } from './components/admin/admin.component';
 import { SearchFilterPipe } from './pipes/search.filter.pipe';
 import { PriceFilterPipe } from './pipes/price.filter.pipe';
+import { AuthenticateService } from './services/authenticate.service';
+import { UserLoginComponent } from './components/user.login/user.login.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { PriceFilterPipe } from './pipes/price.filter.pipe';
     PriceComponent,
     AdminComponent,
     SearchFilterPipe,
-    PriceFilterPipe
+    PriceFilterPipe,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,7 @@ import { PriceFilterPipe } from './pipes/price.filter.pipe';
     HttpModule
   ],
   providers: [
-  ],
+  AuthenticateService],
   bootstrap: [
     AppComponent
   ]
