@@ -16,9 +16,12 @@ export class UserLoginComponent implements OnInit {
   private isLoading = false;
   private errMessage: string;
 
-  constructor(private route: ActivatedRoute, private authenticateService: AuthenticateService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private authenticateService: AuthenticateService, private router: Router) {
+    console.log('UserLogin constructor');
+  }
 
   ngOnInit() {
+    console.log('url.. ' + this.route.snapshot.queryParams['returnUrl']);
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -27,7 +30,7 @@ export class UserLoginComponent implements OnInit {
     this.authenticateService.login(username, password).subscribe(
       data => {
         if (!data.json().error) {
-          // localStorage.setItem('loggedUser', JSON.stringify(data.json().user));
+          localStorage.setItem('loggedUser', JSON.stringify(data.json().user));
           this.router.navigate([this.returnUrl]);
         } else {
           this.errMessage = data.json().message;

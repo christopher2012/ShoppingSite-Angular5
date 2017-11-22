@@ -1,11 +1,11 @@
 var mongoose   = require('mongoose');
-var express    = require('express');    
-var app        = express();            
+var express    = require('express');   
 var bodyParser = require('body-parser');
-var path       = require('path');
+var path       = require('path');  
+var app        = express();           
 
 
-var router = require('./routes/router');
+var router = require('./server/routes/router');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -21,6 +21,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error...'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
+console.log('dirname ' + __dirname);
 app.use('/api', router);
 
 

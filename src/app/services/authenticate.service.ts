@@ -1,11 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { User } from '../model/user';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthenticateService {
+export class AuthenticateService implements OnDestroy {
 
-  constructor(private http: Http) { }
+  loggedUser: User;
+  isLogged = false;
+
+  constructor(private http: Http) {
+    if ( localStorage.getItem('loggedUser') !== null) {
+      this.loggedUser = new User(JSON.parse(localStorage.getItem('loggedUser')).username);
+    }
+  }
 
   login(username: string, password: string) {
     const header = new Headers({'Content-Type': 'application/json'});
@@ -22,6 +30,12 @@ export class AuthenticateService {
 
   logout(username) {
     localStorage.removeItem('loggedUser');
+  }
+
+  ngOnDestroy() {
+    if (this.isLogged) {
+      localStorage.setItem('loggedUser', JSON.stringify(this.loggedUser.username));
+    }
   }
 
 }
