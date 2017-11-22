@@ -21,7 +21,7 @@ export class UserLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('url.. ' + this.route.snapshot.queryParams['returnUrl']);
+    console.log(this.route.snapshot.paramMap);
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -31,6 +31,7 @@ export class UserLoginComponent implements OnInit {
       data => {
         if (!data.json().error) {
           localStorage.setItem('loggedUser', JSON.stringify(data.json().user));
+          this.authenticateService.isLogged = true;
           this.router.navigate([this.returnUrl]);
         } else {
           this.errMessage = data.json().message;

@@ -12,6 +12,7 @@ export class AuthenticateService implements OnDestroy {
   constructor(private http: Http) {
     if ( localStorage.getItem('loggedUser') !== null) {
       this.loggedUser = new User(JSON.parse(localStorage.getItem('loggedUser')).username);
+      this.isLogged = true;
     }
   }
 
@@ -30,6 +31,8 @@ export class AuthenticateService implements OnDestroy {
 
   logout(username) {
     localStorage.removeItem('loggedUser');
+    this.isLogged = false;
+    this.loggedUser = null;
   }
 
   ngOnDestroy() {

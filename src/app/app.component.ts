@@ -1,5 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartDataService } from './services/cart.data.service';
+import { AuthenticateService } from './services/authenticate.service';
 
 @Component({
   providers: [CartDataService],
@@ -7,12 +8,16 @@ import { CartDataService } from './services/cart.data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit {
   shopCart: any[];
 
-  constructor(private cartDataService: CartDataService) { }
+  constructor(private cartDataService: CartDataService, private authenticateService: AuthenticateService) { }
 
   ngOnDestroy() {
-    console.log("on Destroy...");
+    console.log('on Destroy...');
+  }
+
+  ngOnInit() {
+    console.log(this.authenticateService.isLogged);
   }
 }

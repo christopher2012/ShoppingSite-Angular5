@@ -14,8 +14,8 @@ import 'rxjs/add/operator/catch';
 export class DataService {
     itemList = items;
 
-    private itemsUrl = 'http://localhost:8080/api/products';
-    private categoriesUrl = 'http://localhost:8080/api/categories';
+    private itemsUrl = '/api/products';
+    private categoriesUrl = '/api/categories';
 
     constructor(private http: Http, private httpClient: HttpClient) { }
 
