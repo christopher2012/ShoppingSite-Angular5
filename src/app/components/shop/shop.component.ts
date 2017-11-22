@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
         );
 
     this.dataService.getCategoryListOb()
-        .subscribe(category => console.log(category),
+        .subscribe(
         err => {
           console.log(err);
         }
@@ -52,7 +52,6 @@ export class ShopComponent implements OnInit {
         this.categorySelectedNames.splice(index, 1);
       }
     }
-    console.log(this.categorySelectedNames);
   }
 
   clearFilter(): void {

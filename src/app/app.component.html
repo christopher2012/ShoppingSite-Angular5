@@ -26,6 +26,7 @@
               Koszyk <span class="badge">{{cartDataService.cartItemList.length}}</span>
             </button>
             <button *ngIf='!authenticateService.isLogged' type="button" routerLink="/login" class="btn btn-default navbar-btn">Zaloguj</button>
+            <span class="user-header" *ngIf='authenticateService.isLogged'>{{authenticateService.loggedUser.username | uppercase}}</span>
             <button *ngIf='authenticateService.isLogged' type="button" (click)='authenticateService.logout()' class="btn btn-default navbar-btn">Wyloguj</button>
           </ul>
         </div>

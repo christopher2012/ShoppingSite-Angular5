@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticateService } from '../../services/authenticate.service';
 import { error } from 'util';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-user-login',
@@ -21,16 +22,17 @@ export class UserLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.route.snapshot.paramMap);
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login(username: string, password: string) {
+
     this.isLoading = true;
     this.authenticateService.login(username, password).subscribe(
       data => {
         if (!data.json().error) {
           localStorage.setItem('loggedUser', JSON.stringify(data.json().user));
+          this.authenticateService.loggedUser = new User(data.json().user.username);
           this.authenticateService.isLogged = true;
           this.router.navigate([this.returnUrl]);
         } else {
