@@ -17,6 +17,17 @@
     text-align: left;
 }
 
+.plus-minus-custom {
+    padding: 20px;
+    margin-left: 45px;
+    margin-right: 5px;
+}
+
+.plus-minus-custom input {
+    text-align: center;
+    padding-left: 25px;
+}
+
 .item-desc h4 {
     display: block;
     text-align: left;

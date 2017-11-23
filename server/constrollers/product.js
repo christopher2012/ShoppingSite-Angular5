@@ -3,10 +3,14 @@ var Category = require('../models/category');
 
 exports.product_list = function(req, res) {
     
-    Product.find( function(err, products) {
+    Product.find().populate("category").exec( function(err, products) {
         if (err)
             res.send(err);
 
+        console.log(products.length);
+        products.rsCount = products.length;
+        products.rsStart = 0;
+        products.rsMax = products.length;
         res.send(products);
     });
 }

@@ -1,15 +1,16 @@
 <div class='row'>
     <div class='col-md-12'>
         <div class='item-desc'>
-        <div class='col-md-9'>
-            <h3>{{item.name}}</h3>
-            <h4>{{item.desc}}</h4>
-            <h5>{{item.category}}</h5>
+            <div class='image-product col-md-2'><img src='../assets/images/cart.png'></div>
+            <div class='col-md-7'>
+                <h2>{{item.name}}</h2>
+                <h4>{{item.desc}}</h4>
+                <h5>{{item.category.name}}</h5>
+            </div>
+            <div class="col-md-3 right-price">
+                <h3>{{item.price | number: '1.2-2' | plnCurrency}}</h3>
+                <button class="btn btn-primary" (click)=addToCart()> Dodaj do koszyka</button>
+            </div>
         </div>
-        <div class="col-md-3 right-price">
-            <h3>{{item.price | number: '1.2-2' | plnCurrency}}</h3>
-            <button class="btn btn-primary" (click)=addToCart()> Dodaj do koszyka</button>
-        </div>
-    </div>
     </div>
 </div>

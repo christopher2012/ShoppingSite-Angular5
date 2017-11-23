@@ -12,6 +12,9 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem;
 
   @Output() onDelete = new EventEmitter<CartItem>();
+  @Output() onPlus = new EventEmitter<CartItem>();
+  @Output() onMinus = new EventEmitter<CartItem>();
+
 
   constructor() { }
 
@@ -20,5 +23,13 @@ export class CartItemComponent implements OnInit {
 
   delete(event) {
     this.onDelete.emit(this.cartItem);
+  }
+
+  plus(event) {
+    this.onPlus.emit(this.cartItem);
+  }
+
+  minus(event) {
+    this.onMinus.emit(this.cartItem);
   }
 }

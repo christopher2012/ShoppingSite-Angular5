@@ -19,4 +19,17 @@ export class CartItemListComponent implements OnInit {
     this.cartItemList.splice(this.cartItemList.indexOf(cartItem), 1);
   }
 
+  onPlus(cartItem: CartItem) {
+    const index = this.cartItemList.indexOf(cartItem);
+    if (index > -1) {
+      this.cartItemList[index].count ++;
+    }
+  }
+
+  onMinus(cartItem: CartItem) {
+    const index = this.cartItemList.indexOf(cartItem);
+    if (index > -1) {
+      this.cartItemList[index].count --;
+    }
+  }
 }

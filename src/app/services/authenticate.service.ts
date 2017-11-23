@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { User } from '../model/user';
 import 'rxjs/add/operator/map';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Injectable()
 export class AuthenticateService implements OnDestroy {
@@ -17,8 +18,11 @@ export class AuthenticateService implements OnDestroy {
   }
 
   login(username: string, password: string) {
+
+    const securedPassword = Md5.hashStr(password);
+    console.log(securedPassword);
     const header = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:8080/api/authenticate', JSON.stringify({username: username, password: password}),
+    return this.http.post('http://localhost:8080/api/authenticate', JSON.stringify({username: username, password: securedPassword}),
       {headers: header});
       /*.map((response: Response) => {
         console.log(response);

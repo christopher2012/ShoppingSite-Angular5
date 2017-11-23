@@ -2,6 +2,8 @@
 import { Item } from './item';
 
 export class CartItem {
-    item: Item;
-    count: number;
+
+    constructor(public item: Item, public count: number) {
+
+    }
 }
