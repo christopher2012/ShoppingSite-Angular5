@@ -52,8 +52,9 @@ exports.category_detail = function(req, res, next) {
 
 exports.category_delete = function(req, res, next) {
 
+    console.log(req.params.categoryID);
     Category.remove({
-        _id: req.params.category_id
+        _id: req.params.categoryID
     }, function( err, category) {
         if (err)
             res.send(err);

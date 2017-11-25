@@ -89,3 +89,13 @@ exports.product_delete = function(req, res, next) {
         res.status(200).json({message: 'Successfully deleted'});
     })
 }
+
+exports.product_delete_all = function(req, res, next) {
+    
+    Product.remove({}, function( err, product) {
+        if (err)
+            res.send(err);
+
+        res.status(200).json({message: 'Successfully deleted'});
+    })
+}

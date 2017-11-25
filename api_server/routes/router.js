@@ -54,6 +54,8 @@ router.route('/products').post(productController.products_create);
 
 router.route('/products').get(productController.product_list);
 
+router.route('/products').delete(productController.product_delete_all);
+
 router.route('/product/:product_id').get(productController.product_detail);
 
 router.route('/product/:product_id').patch(productController.product_update);

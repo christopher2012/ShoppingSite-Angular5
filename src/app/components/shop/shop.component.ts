@@ -25,12 +25,15 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.getItemListLocal()
-        .subscribe(items => this.itemList = items,
-            err => {
-                console.log(err);
-            }
+        .subscribe(
+          items => {
+            this.itemList = items;
+            console.log(items);
+          },
+          err => {
+            console.log(err);
+          }
         );
-
     this.dataService.getCategoryListOb()
         .subscribe(
         err => {
