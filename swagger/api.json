@@ -81,7 +81,7 @@
                 "in": "path",
                 "description": "ID produktu do usunięcia",
                 "required": true,
-                "type": "integer",
+                "type": "string",
                 "format": "int64"
               }
             ],
@@ -171,7 +171,7 @@
                 "in": "path",
                 "description": "ID kategorii do usunięcia",
                 "required": true,
-                "type": "integer",
+                "type": "string",
                 "format": "int64"
               }
             ],
@@ -261,7 +261,7 @@
                 "in": "path",
                 "description": "ID użytkownika do usunięcia",
                 "required": true,
-                "type": "integer",
+                "type": "string",
                 "format": "int64"
               }
             ],
@@ -377,7 +377,7 @@
                 "in": "path",
                 "description": "ID zamówienia do usunięcia",
                 "required": true,
-                "type": "integer",
+                "type": "string",
                 "format": "int64"
               }
             ],
@@ -467,7 +467,7 @@
                 "in": "path",
                 "description": "ID lini zamówienia do usunięcia",
                 "required": true,
-                "type": "integer",
+                "type": "string",
                 "format": "int64"
               }
             ],
@@ -557,7 +557,7 @@
                 "in": "path",
                 "description": "ID adresu do usunięcia",
                 "required": true,
-                "type": "integer",
+                "type": "string",
                 "format": "int64"
               }
             ],

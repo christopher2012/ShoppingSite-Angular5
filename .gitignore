@@ -3,6 +3,9 @@
 #custom
 ./cp_*
 ./swagger/node_modules
+./swagger/handlers
+./swagger/tests
+./swagger/data
 
 # compiled output
 /dist

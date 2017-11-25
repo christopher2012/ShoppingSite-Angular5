@@ -2,13 +2,13 @@
     "name": "swagger",
     "description": "",
     "version": "1.0.0",
-    "author": "k <c>",
+    "author": "s <s>",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "git://github.com/c/swagger.git"
+        "url": "git://github.com/s/swagger.git"
     },
-    "bugs": "http://github.com/c/swagger/issues",
+    "bugs": "http://github.com/s/swagger/issues",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
