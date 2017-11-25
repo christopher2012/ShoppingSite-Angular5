@@ -1,5 +1,5 @@
 'use strict';
-var polineConstroller = require('../../api_server/constrollers/poline');
+var polineController = require('../../api_server/controllers/poline');
 /**
  * Operations on /polines
  */
@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: polineConstroller.poline_create,
+    get: polineController.poline_create,
     /**
      * summary: Dodawanie lini zamówienia
      * description: 
@@ -19,5 +19,5 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: polineConstroller.poline_create
+    post: polineController.poline_create
 };

@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-var categoryController = require('../constrollers/category');
-var userController = require('../constrollers/user');
-var productController = require('../constrollers/product');
-var addressController = require('../constrollers/address');
-var polineConstroller = require('../constrollers/poline');
-var poController = require('../constrollers/po');
+var categoryController = require('../controllers/category');
+var userController = require('../controllers/user');
+var productController = require('../controllers/product');
+var addressController = require('../controllers/address');
+var polineConstroller = require('../controllers/poline');
+var poController = require('../controllers/po');
 
 router.use(function(req, res, next) {
     console.log('Something is happening...');

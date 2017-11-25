@@ -1,5 +1,5 @@
 'use strict';
-var productConstroller = require('../../api_server/constrollers/product');
+var productController = require('../../api_server/controllers/product');
 /**
  * Operations on /products
  */
@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: productConstroller.product_list,
+    get: productController.product_list,
     /**
      * summary: Dodawanie produktu
      * description: 
@@ -19,5 +19,5 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: productConstroller.product_create
+    post: productController.product_create
 };

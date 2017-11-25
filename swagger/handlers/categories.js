@@ -1,5 +1,5 @@
 'use strict';
-var categoryConstroller = require('../../api_server/constrollers/category');
+var dataProvider = require('../data/categories.js');
 /**
  * Operations on /categories
  */
@@ -11,7 +11,21 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: categoryConstroller.category_list,
+    get: function category_list(req, res, next) {
+        /**
+         * Get the data for response 200
+         * For response `default` status 200 is used.
+         */
+        var status = 200;
+        var provider = dataProvider['get']['200'];
+        provider(req, res, function (err, data) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(status).send(data && data.responses);
+        });
+    },
     /**
      * summary: Dodawanie kategorii
      * description: 
@@ -19,5 +33,19 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: categoryConstroller.category_create
+    post: function category_create(req, res, next) {
+        /**
+         * Get the data for response 200
+         * For response `default` status 200 is used.
+         */
+        var status = 200;
+        var provider = dataProvider['post']['200'];
+        provider(req, res, function (err, data) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(status).send(data && data.responses);
+        });
+    }
 };

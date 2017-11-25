@@ -1,5 +1,5 @@
 'use strict';
-var userConstroller = require('../../api_server/constrollers/user');
+var dataProvider = require('../data/users.js');
 /**
  * Operations on /users
  */
@@ -11,7 +11,21 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: userConstroller.user_list,
+    get: function user_list(req, res, next) {
+        /**
+         * Get the data for response 200
+         * For response `default` status 200 is used.
+         */
+        var status = 200;
+        var provider = dataProvider['get']['200'];
+        provider(req, res, function (err, data) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(status).send(data && data.responses);
+        });
+    },
     /**
      * summary: Dodawanie użytkownika
      * description: 
@@ -19,5 +33,19 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: userConstroller.user_create
+    post: function user_create(req, res, next) {
+        /**
+         * Get the data for response 200
+         * For response `default` status 200 is used.
+         */
+        var status = 200;
+        var provider = dataProvider['post']['200'];
+        provider(req, res, function (err, data) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.status(status).send(data && data.responses);
+        });
+    }
 };

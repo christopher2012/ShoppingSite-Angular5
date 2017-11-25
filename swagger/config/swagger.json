@@ -63,6 +63,38 @@
                 "deprecated": false
             }
         },
+        "/product/{productID}": {
+            "delete": {
+                "tags": [
+                    "Produkt"
+                ],
+                "summary": "Usuwanie produktu",
+                "description": "",
+                "operationId": "product_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productID",
+                        "in": "path",
+                        "description": "ID produktu do usunięcia",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Produkt nie został znaleziony"
+                    }
+                }
+            }
+        },
         "/categories": {
             "get": {
                 "summary": "Pobieranie wszystkich kategorii",
@@ -121,6 +153,38 @@
                 "deprecated": false
             }
         },
+        "/category/{categoryID}": {
+            "delete": {
+                "tags": [
+                    "Kategoria"
+                ],
+                "summary": "Usuwanie kategorii",
+                "description": "",
+                "operationId": "category_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "categoryID",
+                        "in": "path",
+                        "description": "ID kategorii do usunięcia",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Kategoria nie została znaleziona"
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "summary": "Pobieranie wszystkich użytkowników",
@@ -174,6 +238,64 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/user/{userID}": {
+            "delete": {
+                "tags": [
+                    "Użytkownik"
+                ],
+                "summary": "Usuwanie użytkownika",
+                "description": "",
+                "operationId": "user_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userID",
+                        "in": "path",
+                        "description": "ID użytkownika do usunięcia",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Użytkownik nie został znaleziony"
+                    }
+                }
+            }
+        },
+        "/pos/lines": {
+            "get": {
+                "summary": "Pobieranie wszystkich zamówień razem z liniami zamówienia",
+                "tags": [
+                    "Zamówienia"
+                ],
+                "operationId": "po_with_lines_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Po_with_lines_populated"
+                            }
+                        }
                     }
                 },
                 "deprecated": false
@@ -237,6 +359,38 @@
                 "deprecated": false
             }
         },
+        "/po/{poID}": {
+            "delete": {
+                "tags": [
+                    "Zamówienia"
+                ],
+                "summary": "Usuwanie zamówienia",
+                "description": "",
+                "operationId": "po_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "poID",
+                        "in": "path",
+                        "description": "ID zamówienia do usunięcia",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Zamówienie nie zostało znalezione"
+                    }
+                }
+            }
+        },
         "/polines": {
             "get": {
                 "summary": "Pobieranie wszystkich lini zamówienia",
@@ -295,6 +449,38 @@
                 "deprecated": false
             }
         },
+        "/poline/{polineID}": {
+            "delete": {
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "summary": "Usuwanie lini zamówienia",
+                "description": "",
+                "operationId": "poline_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "polineID",
+                        "in": "path",
+                        "description": "ID lini zamówienia do usunięcia",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Linia zamównienia nie została znaleziona"
+                    }
+                }
+            }
+        },
         "/addresses": {
             "get": {
                 "summary": "Pobieranie wszystkich adresów",
@@ -351,6 +537,38 @@
                     }
                 },
                 "deprecated": false
+            }
+        },
+        "/address/{addressID}": {
+            "delete": {
+                "tags": [
+                    "Adres"
+                ],
+                "summary": "Usuwanie adresu",
+                "description": "",
+                "operationId": "address_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "addressID",
+                        "in": "path",
+                        "description": "ID adresu do usunięcia",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Adres nie został znaleziony"
+                    }
+                }
             }
         }
     },
@@ -491,6 +709,31 @@
                         "INPROG",
                         "COMP"
                     ]
+                }
+            }
+        },
+        "Po_with_lines_populated": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order status",
+                    "enum": [
+                        "INPROG",
+                        "COMP"
+                    ]
+                },
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Poline"
+                    }
                 }
             }
         },

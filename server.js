@@ -29,7 +29,7 @@ app.use('/api', router);
 
 app.use(swaggerize({
     api: path.resolve('./swagger/config/swagger.json'),
-    handlers: path.resolve('./swagger/handlers'),
+    handlers: path.resolve('./swagger/custom_handlers'),
     docspath: '/swagger' 
 }));
 

@@ -1,5 +1,5 @@
 'use strict';
-var userConstroller = require('../../api_server/constrollers/user');
+var userController = require('../../api_server/controllers/user');
 /**
  * Operations on /users
  */
@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: userConstroller.user_list,
+    get: userController.user_list,
     /**
      * summary: Dodawanie użytkownika
      * description: 
@@ -19,5 +19,5 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: userConstroller.user_create
+    post: userController.user_create
 };

@@ -1,0 +1,263 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Shop app API",
+        "version": "v1"
+    },
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "operationId": "category_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Category"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "operationId": "user_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/pos": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "operationId": "po_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },,
+        "/products": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "operationId": "product_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/polines": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "operationId": "poline_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/addresses": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "operationId": "address_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Category": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                
+            }
+        },
+        "Product": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "category": {
+                    "$ref": "#/definitions/Category"
+                },
+                
+            }
+        },
+        "Address": {
+            "type": "object",
+            "required": [
+              "name",
+              "surname",
+              "address"
+            ],
+            "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "string"
+                }
+            }
+        },
+        "Po": {
+            "type": "object",
+            "properties": {
+                "user": {
+                  "$ref": "#/definitions/User"
+                },
+                "address": {
+                  "$ref": "#/definitions/Address"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Order status",
+                  "enum": [
+                    "INPROG",
+                    "COMP"
+                  ]
+                }
+            }
+        },
+        "Poline": {
+            "type": "object",
+            "properties": {
+                "po": {
+                  "$ref": "#/definitions/Po"
+                },
+                "product": { 
+                  "$ref": "#/definitions/Product"
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "price": {
+                  "type": "integer"
+                }
+            }
+        }
+    }
+}

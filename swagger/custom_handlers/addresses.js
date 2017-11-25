@@ -1,5 +1,5 @@
 'use strict';
-var addressConstroller = require('../../api_server/constrollers/address');
+var addressController = require('../../api_server/controllers/address');
 /**
  * Operations on /addresses
  */
@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: addressConstroller.address_list,
+    get: addressController.address_list,
     /**
      * summary: Dodawanie adresu
      * description: 
@@ -19,5 +19,5 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: addressConstroller.address_create
+    post: addressController.address_create
 };

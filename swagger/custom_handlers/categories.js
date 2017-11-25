@@ -1,5 +1,5 @@
 'use strict';
-var categoryConstroller = require('../../api_server/constrollers/category');
+var categoryController = require('../../api_server/controllers/category');
 /**
  * Operations on /categories
  */
@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: categoryConstroller.category_list,
+    get: categoryController.category_list,
     /**
      * summary: Dodawanie kategorii
      * description: 
@@ -19,5 +19,5 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: categoryConstroller.category_create
+    post: categoryController.category_create
 };

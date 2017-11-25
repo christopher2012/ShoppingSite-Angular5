@@ -1,5 +1,5 @@
 'use strict';
-var  poConstroller = require('../../api_server/constrollers/po');
+var  poController = require('../../api_server/controllers/po');
 /**
  * Operations on /pos
  */
@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: poConstroller.po_list,
+    get: poController.po_list,
     /**
      * summary: Dodawanie zamówienia
      * description: 
@@ -19,5 +19,5 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    post: poConstroller.po_create
+    post: poController.po_create
 };
