@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, } from '@angular/core';
 import { items } from '../../assets/data/item.data.1';
 import { Item } from '../model/item';
 import { CartItem } from '../model/cart.item';
@@ -9,7 +9,10 @@ export class CartDataService {
   cartItemList = [];
   constructor() {
     for ( const item of items) {
-      this.cartItemList.push(new CartItem(new Item(item.name, item.desc, item.category, item.price, item.count), 1));
+      if (localStorage.getItem('shopCart') != null) {
+
+      }
+      // this.cartItemList.push(new CartItem(new Item(item.name, item.desc, item.category, item.price, item.count), 1));
     }
    }
 

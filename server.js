@@ -1,11 +1,15 @@
 var mongoose   = require('mongoose');
 var express    = require('express');   
 var bodyParser = require('body-parser');
-var path       = require('path');  
+var path       = require('path');
+
+var swaggerize = require('swaggerize-express');
+var swaggerUi = require('swaggerize-ui'); 
+
 var app        = express();           
 
 
-var router = require('./server/routes/router');
+var router = require('./api_server/routes/router');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,6 +28,15 @@ app.use(express.static(path.join(__dirname, 'dist')));
 console.log('dirname ' + __dirname);
 app.use('/api', router);
 
+app.use(swaggerize({
+    api: path.resolve('./swagger/config/swagger.json'),
+    handlers: path.resolve('./swagger/handlers'),
+    docspath: '/swagger' 
+}));
+
+app.use('/docs', swaggerUi({
+    docs: '/swagger'  
+}));
 
 app.listen(port);
 console.log('Magic happens op port: ' + port);

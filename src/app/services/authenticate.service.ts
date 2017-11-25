@@ -7,6 +7,8 @@ import {Md5} from 'ts-md5/dist/md5';
 @Injectable()
 export class AuthenticateService implements OnDestroy {
 
+  authenticateUrl = '/api/authenticate';
+
   loggedUser: User;
   isLogged = false;
 
@@ -22,7 +24,7 @@ export class AuthenticateService implements OnDestroy {
     const securedPassword = Md5.hashStr(password);
     console.log(securedPassword);
     const header = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:8080/api/authenticate', JSON.stringify({username: username, password: securedPassword}),
+    return this.http.post(this.authenticateUrl, JSON.stringify({username: username, password: securedPassword}),
       {headers: header});
       /*.map((response: Response) => {
         console.log(response);
