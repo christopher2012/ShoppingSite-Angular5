@@ -42,6 +42,11 @@
     text-align: left;
 }
 
+.item-desc h6 {
+    display: block;
+    text-align: left;
+}
+
 .right-price h3{
     text-align: right;
 }

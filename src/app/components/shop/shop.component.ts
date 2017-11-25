@@ -18,8 +18,8 @@ export class ShopComponent implements OnInit {
   categoryList: Category[];
   categorySelectedNames = [];
   searchString = '';
-  minValue: number;
-  maxValue: number;
+  minValue = '';
+  maxValue = '';
 
   constructor(private dataService: DataService) { }
 
@@ -69,14 +69,12 @@ export class ShopComponent implements OnInit {
     this.searchString = searchString;
   }
 
-  onMinValue(minValue: number) {
+  onMinValue(minValue: string) {
     this.minValue = minValue;
-    console.log(minValue);
   }
 
-  onMaxValue(maxValue) {
+  onMaxValue(maxValue: string) {
     this.maxValue = maxValue;
-    console.log(maxValue);
   }
 
 }
