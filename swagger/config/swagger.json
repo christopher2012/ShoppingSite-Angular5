@@ -5,12 +5,71 @@
         "version": "v1"
     },
     "paths": {
+        "/products": {
+            "get": {
+                "summary": "Pobieranie wszystkich produktów",
+                "tags": [
+                    "Produkt"
+                ],
+                "operationId": "product_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Product_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie produktu",
+                "tags": [
+                    "Produkt"
+                ],
+                "operationId": "product_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt użytkownik",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/categories": {
             "get": {
+                "summary": "Pobieranie wszystkich kategorii",
                 "tags": [
-                    "Category"
+                    "Kategoria"
                 ],
-                "operationId": "categories_get",
+                "operationId": "category_list",
                 "consumes": [],
                 "produces": [
                     "application/json",
@@ -28,27 +87,51 @@
                     }
                 },
                 "deprecated": false
-            }
-        },
-        "/category/{id}": {
-            "get": {
+            },
+            "post": {
+                "summary": "Dodawanie kategorii",
                 "tags": [
-                    "Category"
+                    "Kategoria"
                 ],
-                "operationId": "category_getById",
-                "consumes": [],
+                "operationId": "category_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
                 "produces": [
                     "application/json",
                     "text/json"
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "path",
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt kategoria",
                         "required": true,
-                        "type": "integer",
-                        "format": "int32"
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        }
                     }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "Pobieranie wszystkich użytkowników",
+                "tags": [
+                    "Użytkownik"
+                ],
+                "operationId": "user_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
                 ],
                 "responses": {
                     "200": {
@@ -56,9 +139,215 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Category"
+                                "$ref": "#/definitions/User_populated"
                             }
                         }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie użytkownika",
+                "tags": [
+                    "Użytkownik"
+                ],
+                "operationId": "user_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt użytkownik",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/pos": {
+            "get": {
+                "summary": "Pobieranie wszystkich zamówień",
+                "tags": [
+                    "Zamówienia"
+                ],
+                "operationId": "po_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Po_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie zamówienia",
+                "tags": [
+                    "Zamówienia"
+                ],
+                "operationId": "po_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt zamówienie",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Po"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/polines": {
+            "get": {
+                "summary": "Pobieranie wszystkich lini zamówienia",
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "operationId": "poline_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Poline_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie lini zamówienia",
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "operationId": "poline_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt linia zamówienia",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Poline"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/addresses": {
+            "get": {
+                "summary": "Pobieranie wszystkich adresów",
+                "tags": [
+                    "Adres"
+                ],
+                "operationId": "address_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Address"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie adresu",
+                "tags": [
+                    "Adres"
+                ],
+                "operationId": "address_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt adres",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Address"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     }
                 },
                 "deprecated": false
@@ -71,6 +360,171 @@
             "properties": {
                 "name": {
                     "type": "string"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "User_populated": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                }
+            }
+        },
+        "Product": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                }
+            }
+        },
+        "Product_populated": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "category": {
+                    "$ref": "#/definitions/Category"
+                }
+            }
+        },
+        "Address": {
+            "type": "object",
+            "required": [
+                "name",
+                "surname",
+                "address"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "Po": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order status",
+                    "enum": [
+                        "INPROG",
+                        "COMP"
+                    ]
+                }
+            }
+        },
+        "Po_populated": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order status",
+                    "enum": [
+                        "INPROG",
+                        "COMP"
+                    ]
+                }
+            }
+        },
+        "Poline": {
+            "type": "object",
+            "properties": {
+                "po": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "count": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Poline_populated": {
+            "type": "object",
+            "properties": {
+                "po": {
+                    "$ref": "#/definitions/Po"
+                },
+                "product": {
+                    "$ref": "#/definitions/Product"
+                },
+                "count": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "integer"
                 }
             }
         }

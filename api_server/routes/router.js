@@ -5,6 +5,9 @@ var fs = require('fs');
 var categoryController = require('../constrollers/category');
 var userController = require('../constrollers/user');
 var productController = require('../constrollers/product');
+var addressController = require('../constrollers/address');
+var polineConstroller = require('../constrollers/poline');
+var poController = require('../constrollers/po');
 
 router.use(function(req, res, next) {
     console.log('Something is happening...');
@@ -56,6 +59,21 @@ router.route('/product/:product_id').get(productController.product_detail);
 router.route('/product/:product_id').patch(productController.product_update);
 
 router.route('/product/:product_id').delete(productController.product_delete);
+
+
+
+router.route('/addresses').get(addressController.address_list)
+router.route('/address').post(addressController.address_create);
+
+
+
+router.route('/polines').get(polineConstroller.poline_list);
+router.route('/poline').post(polineConstroller.poline_create);
+
+
+
+router.route('/pos').get(poController.po_list);
+router.route('/po').post(poController.po_create);
 
 
 

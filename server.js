@@ -25,7 +25,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error...'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
-console.log('dirname ' + __dirname);
 app.use('/api', router);
 
 app.use(swaggerize({

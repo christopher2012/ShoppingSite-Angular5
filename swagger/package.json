@@ -1,23 +1,21 @@
 {
-    "name": "shop-swagger",
+    "name": "swagger",
     "description": "",
     "version": "1.0.0",
-    "author": "Krzysztof <crisw2012@gmail.com>",
+    "author": "Krzysztof <c>",
     "contributors": [],
     "repository": {
         "type": "git",
-        "url": "git://github.com/christopher2012/shop-swagger.git"
+        "url": "git://github.com/c/swagger.git"
     },
-    "bugs": "http://github.com/christopher2012/shop-swagger/issues",
+    "bugs": "http://github.com/c/swagger/issues",
     "publishConfig": {
         "registry": "https://registry.npmjs.org"
     },
     "dependencies": {
-        "body-parser": "^1.15.0",
         "express": "^4.0.0",
-        "jsonpath": "^1.0.0",
+        "body-parser": "^1.15.0",
         "swaggerize-express": "^4.0.0",
-        "swaggerize-ui": "^1.0.1",
         "swagmock": "~0.0.2"
     },
     "devDependencies": {

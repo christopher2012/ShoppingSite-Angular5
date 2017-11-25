@@ -6,7 +6,7 @@ exports.category_list = function(req, res, next) {
         if (err)
             res.send(err);
 
-        res.send(categories);
+        res.status(200).send(categories);
     });
 }
 
@@ -19,7 +19,7 @@ exports.category_create = function(req, res, next) {
         if(err)
             res.send(err);
         
-        res.json({message: 'Category created'});
+        res.status(200).json({message: 'Category created'});
     })
 }
 
@@ -35,7 +35,7 @@ exports.category_update = function(req, res, next) {
             if(err)
                 res.send(err);
             
-            res.json({message: "Category updated... "});
+            res.status(200).json({message: "Category updated... "});
         })
     })
 }
@@ -46,7 +46,7 @@ exports.category_detail = function(req, res, next) {
         if( err )
             res.send(err)
 
-        res.json(category);
+        res.status(200).json(category);
     })
 }
 
@@ -58,6 +58,6 @@ exports.category_delete = function(req, res, next) {
         if (err)
             res.send(err);
 
-        res.json({message: 'Successfully deleted'});
+        res.status(200).json({message: 'Successfully deleted'});
     })
 }

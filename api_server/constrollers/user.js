@@ -2,11 +2,11 @@ var User = require('../models/user');
 
 exports.user_list = function(req, res, next) {
     
-    User.find( function(err, users) {
+    User.find().populate("address").exec(function(err, users) {
         if (err)
             res.send(err);
 
-        res.send(users);
+        res.status(200).send(users);
     });
 }
 
@@ -20,7 +20,7 @@ exports.user_create = function(req, res, next) {
         if(err)
             res.send(err);
         
-        res.json({message: 'User created'});
+        res.status(200).json({message: 'User created'});
     })
 }
 
@@ -36,7 +36,7 @@ exports.user_update = function(req, res, next) {
             if(err)
                 res.send(err);
             
-            res.json({message: "User updated... "});
+            res.status(200).json({message: "User updated... "});
         })
     })
 }
@@ -47,7 +47,7 @@ exports.user_detail = function(req, res, next) {
         if( err )
             res.send(err)
 
-        res.json(user);
+        res.status(200).json(user);
     })
 }
 
@@ -59,7 +59,7 @@ exports.user_delete = function(req, res, next) {
         if (err)
             res.send(err);
 
-        res.json({message: 'Successfully deleted'});
+        res.status(200).json({message: 'Successfully deleted'});
     })
 }
 
