@@ -1,4 +1,4 @@
-import { Injectable, } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { items } from '../../assets/data/item.data.1';
 import { Item } from '../model/item';
 import { CartItem } from '../model/cart.item';
@@ -8,18 +8,15 @@ export class CartDataService {
 
   cartItemList = [];
   constructor() {
-    for ( const item of items) {
       if (localStorage.getItem('shopCart') != null) {
-
+        this.cartItemList = JSON.parse(localStorage.getItem('shopCart'));
       }
-      // this.cartItemList.push(new CartItem(new Item(item.name, item.desc, item.category, item.price, item.count), 1));
-    }
    }
 
-  addItemToCart(item: Item): void {
+  addItemToCart(item): void {
     let itemFound = false;
     for (const itemTemp of this.cartItemList) {
-      if (itemTemp.item === item) {
+      if (itemTemp.item._id === item._id) {
         itemTemp.count ++;
         itemFound = true;
         break;
@@ -28,11 +25,11 @@ export class CartDataService {
     if (!itemFound) {
       this.cartItemList.push(new CartItem(item, 1));
     }
+    localStorage.setItem('shopCart', JSON.stringify(this.cartItemList));
   }
 
 
   getCartItemList() {
       return this.cartItemList;
   }
-
 }

@@ -11,7 +11,7 @@ module.exports = {
      * produces: application/json, text/json
      * responses: 200
      */
-    get: polineController.poline_create,
+    get: polineController.poline_list,
     /**
      * summary: Dodawanie lini zamówienia
      * description: 

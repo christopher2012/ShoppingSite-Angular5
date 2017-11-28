@@ -2,9 +2,28 @@ import { CartItem } from './cart.item';
 
 
 export class Order {
-    constructor(private name: string, private city: string, private street, private items: string[]) {}
 
-    toJson(): any {
-        return { 'name': this.name, 'city': this.city, 'street': this.street, 'items': this.items };
+    name: string;
+    surname: string;
+    address: string;
+    userid: string;
+    addressid: string;
+    status = 'INPROG';
+    poid: string;
+    polines = [];
+
+    constructor(name: string, surname: string, address: string) {
+        this.name = name;
+        this.surname = name;
+        this.address = address;
+    }
+
+    cartDataToPolines(cartData: any[]) {
+        for (const cartItem of cartData) {
+            const price = cartItem.count * cartItem.item.price;
+            this.polines.push({itemid: cartItem.item._id, count: cartItem.count, poid: this.poid, price: price});
+        }
+
+        console.log(this.polines);
     }
 }

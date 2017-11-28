@@ -4,6 +4,7 @@ import { OrderService } from '../../services/order.service';
 import { CartItem } from '../../model/cart.item';
 import { CartDataService } from '../../services/cart.data.service';
 import { Order } from '../../model/order';
+import { AuthenticateService } from '../../services/authenticate.service';
 
 @Component({
   providers: [OrderService],
@@ -13,17 +14,56 @@ import { Order } from '../../model/order';
 })
 export class OrderComponent implements OnInit {
 
-  name: string;
-  city: string;
-  street: string;
+  submitted = false;
+  isReady = false;
 
-  constructor(private orderService: OrderService, private cartDataService: CartDataService) { }
+  model = new Order('', '', '');
 
-  ngOnInit() {
+  constructor(private orderService: OrderService, private cartDataService: CartDataService,
+    private autheticateService: AuthenticateService) { }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('loggedUser') !== null) {
+      console.log(localStorage.getItem('loggedUser'));
+      this.model.address = JSON.parse(localStorage.getItem('loggedUser')).address.address;
+      this.model.name = JSON.parse(localStorage.getItem('loggedUser')).address.name;
+      this.model.surname = JSON.parse(localStorage.getItem('loggedUser')).address.surname;
+      this.model.userid = JSON.parse(localStorage.getItem('loggedUser'))._id;
+      this.model.cartDataToPolines(this.cartDataService.cartItemList);
+      console.log(this.model.polines);
+    }
+    this.isReady = true;
   }
 
-  order(event) {
-    this.orderService.order(new Order(this.name, this.city, this.street, this.cartDataService.cartItemList)).subscribe(
-      response => console.log(response));
+  onSubmit() {
+    this.isReady = false;
+    this.orderService.createAddress(this.model).subscribe(
+      data => {
+        console.log(data.json());
+        this.model.addressid = data.json()._id;
+
+        this.orderService.createPo(this.model).subscribe(
+          orderData => {
+
+            this.model.poid = orderData.json()._id;
+            console.log(this.model.poid);
+
+            this.orderService.createPolines(this.model).subscribe(
+              polinesData => {
+                console.log(polinesData.json());
+                this.cartDataService.cartItemList = [];
+              },
+              err => {
+
+              }
+            );
+          }
+        );
+      },
+      err => console.log(err)
+    );
+
+    this.submitted = true;
+    this.isReady = true;
   }
 }

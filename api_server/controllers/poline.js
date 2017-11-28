@@ -26,10 +26,30 @@ exports.poline_create = function(req, res, next) {
     })
 }
 
+exports.polines_create = function(req, res, next) {
+    
+    console.log(req.body);
+
+    for (const poline of req.body){
+        let newPoline = new Poline();
+        newPoline.po = poline.poid;
+        newPoline.product = poline.itemid;
+        newPoline.count = poline.count;
+        newPoline.price = poline.price;
+    
+        newPoline.save(function(err) {
+            if(err)
+                res.send(err);
+        
+        })
+    }
+    res.status(200).json({message: 'Polines created'});
+}
+
 exports.product_delete = function(req, res, next) {
     
     Poline.remove({
-        _id: req.params.product_id
+        _id: req.params.polineID
     }, function( err, poline) {
         if (err)
             res.send(err);

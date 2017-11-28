@@ -13,7 +13,6 @@ import { Category } from '../../model/category';
 })
 export class ShopComponent implements OnInit {
 
-  itemList2: Item[];
   itemList = [];
   categoryList: Category[];
   categorySelectedNames = [];
@@ -60,6 +59,8 @@ export class ShopComponent implements OnInit {
   clearFilter(): void {
     this.searchString = '';
     this.categorySelectedNames = [];
+    this.minValue = '';
+    this.maxValue = '';
     for ( const category of this.categoryList ) {
       category.isSelected = false;
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
 import { NouisliderModule } from 'ng2-nouislider';
 
 @Component({
@@ -10,6 +10,8 @@ export class PriceComponent implements OnInit, OnChanges {
 
   @Output() onMinValue = new EventEmitter<number>();
   @Output() onMaxValue = new EventEmitter<number>();
+  @Input() min = '';
+  @Input() max = '';
 
   constructor() { }
 

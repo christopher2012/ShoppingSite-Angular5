@@ -33,6 +33,8 @@ import { PriceFilterPipe } from './pipes/price.filter.pipe';
 import { AuthenticateService } from './services/authenticate.service';
 import { UserLoginComponent } from './components/user.login/user.login.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     ItemListComponent,
@@ -60,7 +62,8 @@ import { UserLoginComponent } from './components/user.login/user.login.component
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [
   AuthenticateService],

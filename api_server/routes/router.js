@@ -28,11 +28,11 @@ router.route('/category').post(categoryController.category_create);
 
 router.route('/categories').get(categoryController.category_list);
 
-router.route('/category/:category_id').get(categoryController.category_detail);
+router.route('/category/:categoryID').get(categoryController.category_detail);
 
-router.route('/category/:category_id').patch(categoryController.category_update);
+router.route('/category/:categoryID').patch(categoryController.category_update);
 
-router.route('/category/:category_id').delete(categoryController.category_delete);
+router.route('/category/:categoryID').delete(categoryController.category_delete);
 
 
 
@@ -40,11 +40,11 @@ router.route('/user').post(userController.user_create);
 
 router.route('/users').get(userController.user_list);
 
-router.route('/user/:user_id').get(userController.user_detail);
+router.route('/user/:userID').get(userController.user_detail);
 
-router.route('/user/:user_id').patch(userController.user_update);
+router.route('/user/:userID').patch(userController.user_update);
 
-router.route('/user/:user_id').delete(userController.user_delete);
+router.route('/user/:userID').delete(userController.user_delete);
 
 
 
@@ -56,11 +56,11 @@ router.route('/products').get(productController.product_list);
 
 router.route('/products').delete(productController.product_delete_all);
 
-router.route('/product/:product_id').get(productController.product_detail);
+router.route('/product/:productID').get(productController.product_detail);
 
-router.route('/product/:product_id').patch(productController.product_update);
+router.route('/product/:productID').patch(productController.product_update);
 
-router.route('/product/:product_id').delete(productController.product_delete);
+router.route('/product/:productID').delete(productController.product_delete);
 
 
 
@@ -71,6 +71,7 @@ router.route('/address').post(addressController.address_create);
 
 router.route('/polines').get(polineConstroller.poline_list);
 router.route('/poline').post(polineConstroller.poline_create);
+router.route('/polines').post(polineConstroller.polines_create);
 
 
 

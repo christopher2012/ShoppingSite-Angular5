@@ -1,15 +1,47 @@
 <div class="row">
-  <div class='col-md-6 order-details'>
-    <h2>Adress zamieszkania</h2>
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Imie i nazwisko" (input)='name=$event.target.value'>
-      <input type="text" class="form-control" placeholder="Miejscowość" (input)='city=$event.target.value'>
-      <input type="text" class="form-control" placeholder="Ulica i numer domu" (input)='street=$event.target.value'>
+  <div class='col-md-6 order-details' *ngIf='!submitted'>
+    <h1>Składanie zamówienia</h1>
+    <div *ngIf='!isReady'>
+      <i class="fa fa-spinner fa-spin spinner-custom" style="font-size:72px"></i>
     </div>
+    <form *ngIf='isReady' (ngSubmit)="onSubmit()" #orderForm='ngForm'>
+      <div class="form-group">
+        <label for="name">Imie</label>
+        <input type="text" class="form-control" id="name" 
+        required [(ngModel)]="model.name" name="name" #ngName="ngModel">
+        <div [hidden]="ngName.valid || ngName.pristine"
+          class="alert alert-danger">
+          Imie jest wymagane
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="surname">Nazwisko</label>
+        <input type="text" class="form-control" id="surname" 
+        required [(ngModel)]="model.surname" name="surname" #ngSurname="ngModel">
+        <div [hidden]="ngSurname.valid || ngSurname.pristine"
+          class="alert alert-danger">
+          Nazwisko jest wymagane
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Adres</label>
+        <input type="text" class="form-control" id="address" 
+        required [(ngModel)]="model.address" name="address" #ngAddress="ngModel">
+        <div [hidden]="ngAddress.valid || ngAddress.pristine"
+          class="alert alert-danger" >
+          Adres jest wymagany
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!orderForm.form.valid">Zatwierdź zamówienie</button>
+
+    </form>
   </div>
-</div>
-<div class="row send-order">
-  <div class="col-md-12">
-    <button class="btn btn-success" (click)='order($event)'>Zatwierdź zamówienie</button>
+  <div *ngIf='submitted' class="row">
+    <div class='col-md-6 order-details'>
+      <h1>Zamówienie zostało wysłane.</h1>
+    </div>
   </div>
 </div>

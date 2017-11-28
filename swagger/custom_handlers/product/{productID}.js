@@ -1,5 +1,5 @@
 'use strict';
-var productController = require('../../../api_server/controllers/address');
+var productController = require('../../../api_server/controllers/product');
 /**
  * Operations on /product/{productID}
  */

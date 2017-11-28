@@ -1,10 +1,11 @@
 <div *ngFor='let item of itemList | searchFilter: searchString | priceFilter: {min: minValue, max: maxValue} | categoryFilter: categorySelectedNames | paginate: {
-        itemsPerPage: 5,
+        itemsPerPage: 3,
         currentPage: pageNumber }'>
     <app-item [item]='item' (onAdd)='onAdd($event)'></app-item>
 </div>
 
 <div>
-    <pagination-controls *ngIf='itemList !== undefined' class='custom-pagin' (pageChange)='pageNumber=$event' previousLabel='' nextLabel=''>
+    <pagination-controls *ngIf='itemList.length > 0' class='custom-pagin'
+        (pageChange)='pageNumber=$event' autoHide="true" previousLabel='' nextLabel=''>
     </pagination-controls>
 </div>

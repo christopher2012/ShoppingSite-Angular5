@@ -6,7 +6,11 @@
             [categoryList]='categoryList'
             (onSelectListView)='onSelectListView($event)'>
         </app-category-list>
-        <app-price (onMaxValue)='onMaxValue($event)' (onMinValue)='onMinValue($event)'></app-price>
+        <app-price 
+            [min]='minValue'
+            [max]='maxValue'
+            (onMaxValue)='onMaxValue($event)'
+            (onMinValue)='onMinValue($event)'></app-price>
     </div>
     <div class="col-md-9" align="center">
         <app-item-list [itemList]='itemList' 

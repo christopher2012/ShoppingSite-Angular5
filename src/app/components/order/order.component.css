@@ -6,3 +6,16 @@
     margin-bottom: 12px;
     width: 300px;
 }
+
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+.ng-invalid:not(form)  {
+border-left: 5px solid #a94442; /* red */
+}
+
+.spinner-custom {
+    margin-top: 12px;
+    margin-left: 48px;
+}

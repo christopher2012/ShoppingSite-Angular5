@@ -80,8 +80,9 @@ exports.product_detail = function(req, res, next) {
 
 exports.product_delete = function(req, res, next) {
 
+    console.log(req.params.productID);
     Product.remove({
-        _id: req.params.product_id
+        _id: req.params.productID
     }, function( err, product) {
         if (err)
             res.send(err);

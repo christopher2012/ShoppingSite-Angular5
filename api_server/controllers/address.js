@@ -21,14 +21,14 @@ exports.address_create = function(req, res, next) {
         if(err)
             res.send(err);
         
-        res.status(200).json({message: 'Address created'});
+        res.status(200).json({message: 'Address created', _id: address._id});
     })
 }
 
 exports.product_delete = function(req, res, next) {
     
     Address.remove({
-        _id: req.params.product_id
+        _id: req.params.addressID
     }, function( err, address) {
         if (err)
             res.send(err);

@@ -14,8 +14,8 @@ export class ItemListComponent implements OnInit {
     @Input() itemList;
     @Input() categorySelectedNames: string[];
     @Input() searchString: string;
-    @Input() minValue = 0;
-    @Input() maxValue = 0;
+    @Input() minValue = '';
+    @Input() maxValue = '';
 
     private pageNumber = 1;
 

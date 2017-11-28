@@ -23,6 +23,7 @@ exports.po_with_lines_list = function(req, res, next) {
 exports.po_create = function(req, res, next) {
     
     var po = new Po();
+    console.log(req.body);
     po.user = req.body.user;
     po.address = req.body.address;
     po.status = req.body.status;
@@ -31,14 +32,14 @@ exports.po_create = function(req, res, next) {
         if(err)
             res.send(err);
         
-        res.status(200).json({message: 'Po created'});
+        res.status(200).json({message: 'Po created', _id: po._id});
     })
 }
 
 exports.product_delete = function(req, res, next) {
     
     Po.remove({
-        _id: req.params.product_id
+        _id: req.params.poID
     }, function( err, po) {
         if (err)
             res.send(err);

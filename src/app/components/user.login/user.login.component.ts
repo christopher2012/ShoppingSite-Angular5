@@ -31,6 +31,7 @@ export class UserLoginComponent implements OnInit {
     this.authenticateService.login(username, password).subscribe(
       data => {
         if (!data.json().error) {
+          console.log(JSON.stringify(data.json().user));
           localStorage.setItem('loggedUser', JSON.stringify(data.json().user));
           this.authenticateService.loggedUser = new User(data.json().user.username);
           this.authenticateService.isLogged = true;

@@ -25,6 +25,8 @@ exports.user_create = function(req, res, next) {
     var user = new User();
     user.username = req.body.username;
     user.password = req.body.password;
+    user.email = req.body.email;
+    user.address = req.body.address;
 
     user.save(function(err) {
         if(err)
@@ -63,8 +65,9 @@ exports.user_detail = function(req, res, next) {
 
 exports.user_delete = function(req, res, next) {
 
+    console.log(req.params.userID);
     User.remove({
-        _id: req.params.user_id
+        _id: req.params.userID
     }, function( err, user) {
         if (err)
             res.send(err);
@@ -77,11 +80,13 @@ exports.user_authenticate = function(req, res, next) {
 
 
     console.log(req.body);
-    User.findOne({username: req.body.username}, function(err, user) {
+    User.findOne({username: req.body.username}).populate("address").exec( function(err, user) {
         if (err)
             res.send(err);
             
+        
         if(user !== null && user.password === req.body.password) {
+            console.log(user);
             res.json({error: false, message: "Dane użytkownika poprawne", user: user});
         } else {
             res.json({error: true, message: "Dane użytkownika niepoprawne"});
