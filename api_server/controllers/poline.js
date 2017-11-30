@@ -10,6 +10,16 @@ exports.poline_list = function(req, res, next) {
     });
 }
 
+exports.poline_po_list = function(req, res, next) {
+    
+    Poline.find({po: req.params.poID}).populate("product").populate("po").exec( function(err, polines) {
+        if (err)
+            res.send(err);
+        
+        res.status(200).send(polines);
+    });
+}
+
 exports.poline_create = function(req, res, next) {
     
     var poline = new Poline();

@@ -17,6 +17,8 @@ export class CartItemListComponent implements OnInit {
 
   onDelete(cartItem: CartItem) {
     this.cartItemList.splice(this.cartItemList.indexOf(cartItem), 1);
+
+    localStorage.setItem('shopCart', JSON.stringify(this.cartItemList));
   }
 
   onPlus(cartItem: CartItem) {
@@ -24,6 +26,8 @@ export class CartItemListComponent implements OnInit {
     if (index > -1) {
       this.cartItemList[index].count ++;
     }
+
+    localStorage.setItem('shopCart', JSON.stringify(this.cartItemList));
   }
 
   onMinus(cartItem: CartItem) {
@@ -31,5 +35,7 @@ export class CartItemListComponent implements OnInit {
     if (index > -1) {
       this.cartItemList[index].count --;
     }
+
+    localStorage.setItem('shopCart', JSON.stringify(this.cartItemList));
   }
 }

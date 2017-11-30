@@ -1,0 +1,775 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Shop app API",
+        "version": "v1"
+    },
+    "paths": {
+        "/products": {
+            "get": {
+                "summary": "Pobieranie wszystkich produktów",
+                "tags": [
+                    "Produkt"
+                ],
+                "operationId": "product_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Product_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie produktu",
+                "tags": [
+                    "Produkt"
+                ],
+                "operationId": "product_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt użytkownik",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Product"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/product/{productID}": {
+            "delete": {
+                "tags": [
+                    "Produkt"
+                ],
+                "summary": "Usuwanie produktu",
+                "description": "",
+                "operationId": "product_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "productID",
+                        "in": "path",
+                        "description": "ID produktu do usunięcia",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Produkt nie został znaleziony"
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "summary": "Pobieranie wszystkich kategorii",
+                "tags": [
+                    "Kategoria"
+                ],
+                "operationId": "category_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Category"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie kategorii",
+                "tags": [
+                    "Kategoria"
+                ],
+                "operationId": "category_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt kategoria",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Category"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/category/{categoryID}": {
+            "delete": {
+                "tags": [
+                    "Kategoria"
+                ],
+                "summary": "Usuwanie kategorii",
+                "description": "",
+                "operationId": "category_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "categoryID",
+                        "in": "path",
+                        "description": "ID kategorii do usunięcia",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Kategoria nie została znaleziona"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "Pobieranie wszystkich użytkowników",
+                "tags": [
+                    "Użytkownik"
+                ],
+                "operationId": "user_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/User_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie użytkownika",
+                "tags": [
+                    "Użytkownik"
+                ],
+                "operationId": "user_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt użytkownik",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/user/{userID}": {
+            "delete": {
+                "tags": [
+                    "Użytkownik"
+                ],
+                "summary": "Usuwanie użytkownika",
+                "description": "",
+                "operationId": "user_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userID",
+                        "in": "path",
+                        "description": "ID użytkownika do usunięcia",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Użytkownik nie został znaleziony"
+                    }
+                }
+            }
+        },
+        "/pos/lines": {
+            "get": {
+                "summary": "Pobieranie wszystkich zamówień razem z liniami zamówienia",
+                "tags": [
+                    "Zamówienia"
+                ],
+                "operationId": "po_with_lines_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Po_with_lines_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/pos": {
+            "get": {
+                "summary": "Pobieranie wszystkich zamówień",
+                "tags": [
+                    "Zamówienia"
+                ],
+                "operationId": "po_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Po_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie zamówienia",
+                "tags": [
+                    "Zamówienia"
+                ],
+                "operationId": "po_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt zamówienie",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Po"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/po/{poID}": {
+            "delete": {
+                "tags": [
+                    "Zamówienia"
+                ],
+                "summary": "Usuwanie zamówienia",
+                "description": "",
+                "operationId": "po_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "poID",
+                        "in": "path",
+                        "description": "ID zamówienia do usunięcia",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Zamówienie nie zostało znalezione"
+                    }
+                }
+            }
+        },
+        "/polines": {
+            "get": {
+                "summary": "Pobieranie wszystkich lini zamówienia",
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "operationId": "poline_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Poline_populated"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie lini zamówienia",
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "operationId": "poline_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt linia zamówienia",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Poline"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/poline/{polineID}": {
+            "delete": {
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "summary": "Usuwanie lini zamówienia",
+                "description": "",
+                "operationId": "poline_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "polineID",
+                        "in": "path",
+                        "description": "ID lini zamówienia do usunięcia",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Linia zamównienia nie została znaleziona"
+                    }
+                }
+            }
+        },
+        "/addresses": {
+            "get": {
+                "summary": "Pobieranie wszystkich adresów",
+                "tags": [
+                    "Adres"
+                ],
+                "operationId": "address_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Address"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            },
+            "post": {
+                "summary": "Dodawanie adresu",
+                "tags": [
+                    "Adres"
+                ],
+                "operationId": "address_create",
+                "consumes": [
+                    "application/json",
+                    "text/json"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Obiekt adres",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Address"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/address/{addressID}": {
+            "delete": {
+                "tags": [
+                    "Adres"
+                ],
+                "summary": "Usuwanie adresu",
+                "description": "",
+                "operationId": "address_delete",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "addressID",
+                        "in": "path",
+                        "description": "ID adresu do usunięcia",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Adres nie został znaleziony"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Category": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "User_populated": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                }
+            }
+        },
+        "Product": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                }
+            }
+        },
+        "Product_populated": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "imagePath": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "string"
+                },
+                "category": {
+                    "$ref": "#/definitions/Category"
+                }
+            }
+        },
+        "Address": {
+            "type": "object",
+            "required": [
+                "name",
+                "surname",
+                "address"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                }
+            }
+        },
+        "Po": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "type": "string"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order status",
+                    "enum": [
+                        "INPROG",
+                        "COMP"
+                    ]
+                }
+            }
+        },
+        "Po_populated": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order status",
+                    "enum": [
+                        "INPROG",
+                        "COMP"
+                    ]
+                }
+            }
+        },
+        "Po_with_lines_populated": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Order status",
+                    "enum": [
+                        "INPROG",
+                        "COMP"
+                    ]
+                },
+                "schema": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Poline"
+                    }
+                }
+            }
+        },
+        "Poline": {
+            "type": "object",
+            "properties": {
+                "po": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "count": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Poline_populated": {
+            "type": "object",
+            "properties": {
+                "po": {
+                    "$ref": "#/definitions/Po"
+                },
+                "product": {
+                    "$ref": "#/definitions/Product"
+                },
+                "count": {
+                    "type": "integer"
+                },
+                "price": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

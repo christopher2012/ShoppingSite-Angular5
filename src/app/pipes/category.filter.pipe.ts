@@ -8,8 +8,8 @@ import { Category } from '../model/Category';
 export class CategoryFilterPipe implements PipeTransform {
 
   transform(value: any, category: string[]): any {
-    console.log(value);
-    console.log(category);
+    //console.log(value);
+    //console.log(category);
     if (category.length === 0) {
       return value;
     }

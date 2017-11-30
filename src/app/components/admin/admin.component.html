@@ -1,62 +1,40 @@
 <div class="container">
   <div class="jumbotron row">
-    <h3>Dodawanie produktu</h3>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
+    <h3>Wyróżnianie ofert</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">Produkty</div>
+                <div class="panel-body">
+                    <div *ngFor='let product of productList' class="panel panel-default col-sm-4" 
+                      (onDragSuccess)="promoAdded($event)" dnd-draggable [dragData]='product' [dragEnabled]="true">
+                        <div class="panel-body">
+                            <div class="panel-title-cust">{{product.name}}</div>
+                            <div class="panel-price-cust">{{product.price | plnCurrency}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div dnd-droppable class="panel panel-info" (onDropSuccess)="addToPromo($event)">
+                <div class="panel-heading">Promocja</div>
+                <div class="panel-body" *ngFor='let product of promoProductList'>
+                    <div class="panel-title-cust">{{product.name}}</div>
+                    <input class="form-control new-price" value='{{product.price}}' (input)="product.price = $event.target.value">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
+    <div class='footer-promo'>
+        <label for="time">Czas promocji:</label>
+        <input type="number" class="form-control" [value]='time' (input)="time = $event.target.value" id="time">
+        <button class="btn btn-success btn-success-cust" (click)='refresh("promo")'>Zatwierdź promocję</button>
     </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
-    </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
-    </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
-    </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
-    </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
-    </div>
-    <div class="form-group has-success has-feedback">
-      <label class="control-label" for="inputSuccess2">Input with success</label>
-      <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputSuccess2Status" class="sr-only">(success)</span>
-    </div>
-
-
-    <button class="btn btn-success">Dodaj</button>
   </div>
+
   <div class="jumbotron row">
-    <h3>Dodawanie kategorii</h3>
-  </div>
-  <div class="jumbotron row">
-    <h3>Dodawanie promocji</h3>
+    <h3>Odświerzanie danych o produktach</h3>
+    <button class="btn btn-success btn-success-cust" (click)='refresh("product")'>Odświerz</button>
   </div>
 </div>

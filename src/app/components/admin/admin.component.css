@@ -1,11 +1,46 @@
+
+
 input {
     margin-bottom: 12px;
 }
 
-.form-group {
+.form-group-cust {
     width: 300px;
 }
 
-.btn-success {
-    width: 300px;
+.btn-success-cust {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.panel-title-cust {
+    font-size: 14px;
+}
+
+.panel-body {
+    padding: 10px;
+}
+
+.panel-price-cust {
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+}
+
+.footer-promo label {
+    display: inline-block;
+}
+
+.footer-promo input {
+    display: inline-block;
+    width: 100px;
+}
+
+.footer-promo button {
+    margin-top: 0px;
+}
+
+.new-price {
+    width: 100px;
+    float: right;
 }

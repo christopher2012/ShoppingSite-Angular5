@@ -391,6 +391,39 @@
                 }
             }
         },
+        "/polines/po/{poID}": {
+            "get": {
+                "summary": "Pobieranie wszystkich lini zamówienia z podanym numerem zamówienia",
+                "tags": [
+                    "Linie zamówienia"
+                ],
+                "operationId": "poline_poid_list",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "poID",
+                        "in": "path",
+                        "description": "ID zamówienia do wyszukania",
+                        "required": true,
+                        "type": "string",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "404": {
+                        "description": "Zamówienie nie zostało znalezione"
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/polines": {
             "get": {
                 "summary": "Pobieranie wszystkich lini zamówienia",

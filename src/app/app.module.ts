@@ -34,6 +34,7 @@ import { AuthenticateService } from './services/authenticate.service';
 import { UserLoginComponent } from './components/user.login/user.login.component';
 
 import { FormsModule } from '@angular/forms';
+import { DndModule } from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     HttpClientModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    DndModule.forRoot()
   ],
   providers: [
   AuthenticateService],

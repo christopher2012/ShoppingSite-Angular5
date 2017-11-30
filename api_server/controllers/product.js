@@ -53,11 +53,11 @@ exports.products_create = function(req, res, next) {
 
 exports.product_update = function(req, res, next) {
     
-    Product.findById(req.params.category_id, function(err, product) {
+    Product.findById(req.params.productID, function(err, product) {
         if(err)
             res.send(err);
 
-        product.name = req.body.name;
+        product.price = req.body.price;
 
         product.save( function(err) {
             if(err)
@@ -66,6 +66,40 @@ exports.product_update = function(req, res, next) {
             res.json({message: "Product updated... "});
         })
     })
+}
+
+exports.product_promo_add = function(req, res, next) {
+    console.log(req.body);
+    for(var promoProduct of req.body) {
+        Product.findById(promoProduct._id, function(err, product) {
+            if(err)
+                res.send(err);
+
+            product.oldPrice = product.price;
+            product.price = promoProduct.price;
+            product.promotion = true;
+
+            product.save( function(err) {
+                if(err)
+                    res.send(err);
+                
+            })
+        })
+    }
+    
+    res.json({message: "Product updated... "});
+}
+
+exports.product_promo_del = function(req, res, next) {
+
+    Product.update({promotion: true}, {promotion: false, }, {multi: true}, function(err, product) {
+        if(err){
+            res.send(err);
+        }
+        console.log(product);
+    });
+    
+    res.json({message: "Product updated... "});
 }
 
 exports.product_detail = function(req, res, next) {

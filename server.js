@@ -1,14 +1,37 @@
 var mongoose   = require('mongoose');
+var http       = require('http');
 var express    = require('express');   
 var bodyParser = require('body-parser');
 var path       = require('path');
-
+var socket     = require('socket.io');
 var swaggerize = require('swaggerize-express');
 var swaggerUi  = require('swaggerize-ui'); 
 
-var app        = express();           
+var app        = express();    
+
+var server     = http.createServer(app);       
+var io         = socket(server);
 
 var router = require('./api_server/routes/router');
+
+io.on('connection', function(socket) {
+    console.log("something connected");
+
+    socket.on('refresh', (message) => {
+        console.log(message);
+        io.emit('message', {data: message});
+    });
+
+    socket.on('promo', (message) => {
+        console.log(message);
+        
+        io.emit('message', {data: message});
+    });
+    
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -37,5 +60,5 @@ app.use('/docs', swaggerUi({
     docs: '/swagger'  
 }));
 
-app.listen(port);
+server.listen(port);
 console.log('Magic happens op port: ' + port);

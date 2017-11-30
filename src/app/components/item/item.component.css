@@ -51,8 +51,12 @@
     text-align: right;
 }
 
-.right-price button{
+.right-price button {
     margin-top: 10px;
     float:right;
     display: block;
+}
+
+.promo-price {
+    color: red;
 }

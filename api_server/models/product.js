@@ -7,7 +7,9 @@ var ProductSchema = new Schema({
     description: String,
     imagePath: String,
     price: String,
-    category: { type: Schema.Types.ObjectId, ref:'Category' }
+    promotion: { type: Boolean, default: false },
+    category: { type: Schema.Types.ObjectId, ref:'Category' },
+    oldPrice: String
 })
 
 module.exports = mongoose.model( 'Product', ProductSchema );

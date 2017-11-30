@@ -62,6 +62,10 @@ router.route('/product/:productID').patch(productController.product_update);
 
 router.route('/product/:productID').delete(productController.product_delete);
 
+router.route('/products/promo').post(productController.product_promo_add);
+
+router.route('/products/promo_del').post(productController.product_promo_del);
+
 
 
 router.route('/addresses').get(addressController.address_list)
@@ -72,6 +76,7 @@ router.route('/address').post(addressController.address_create);
 router.route('/polines').get(polineConstroller.poline_list);
 router.route('/poline').post(polineConstroller.poline_create);
 router.route('/polines').post(polineConstroller.polines_create);
+router.route('/polines/po/:poID').get(polineConstroller.poline_po_list);
 
 
 

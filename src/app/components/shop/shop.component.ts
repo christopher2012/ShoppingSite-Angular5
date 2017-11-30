@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Item } from '../../model/item';
 import { Category } from '../../model/category';
@@ -11,7 +11,7 @@ import { Category } from '../../model/category';
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.css']
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
 
   itemList = [];
   categoryList: Category[];
@@ -19,29 +19,44 @@ export class ShopComponent implements OnInit {
   searchString = '';
   minValue = '';
   maxValue = '';
+  connection;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+
+  }
 
   ngOnInit() {
-    this.dataService.getItemListLocal()
-        .subscribe(
-          items => {
-            this.itemList = items;
-            console.log(items);
-          },
-          err => {
-            console.log(err);
-          }
-        );
-    this.dataService.getCategoryListOb()
-        .subscribe(
-        err => {
-          console.log(err);
-        }
-        );
 
-        this.dataService.getCategoryListOb()
-          .subscribe(categories => this.categoryList = categories);
+    this.connection = this.dataService.getMessage().subscribe( message => {
+        console.log(message);
+        this.updateItems();
+        this.updateCategories();
+      }
+    );
+
+    this.updateItems();
+    this.updateCategories();
+
+  }
+
+
+  updateItems() {
+    this.dataService.getItemListLocal()
+    .subscribe(
+      items => {
+        this.itemList = items;
+        console.log(items);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  updateCategories() {
+
+    this.dataService.getCategoryListOb()
+      .subscribe(categories => this.categoryList = categories);
   }
 
   onSelectListView(category: Category) {
@@ -77,5 +92,9 @@ export class ShopComponent implements OnInit {
   onMaxValue(maxValue: string) {
     this.maxValue = maxValue;
   }
+
+  ngOnDestroy() {
+    this.connection.unsubscribe();
+}
 
 }
