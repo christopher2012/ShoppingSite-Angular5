@@ -16,13 +16,24 @@ export class ItemListComponent implements OnInit {
     @Input() searchString: string;
     @Input() minValue = '';
     @Input() maxValue = '';
+    showDialogDetails = false;
+    itemDetails = {};
+
 
     private pageNumber = 1;
 
-    constructor(private cartService: CartDataService) { }
+    constructor(private cartService: CartDataService) {
+
+    }
 
     ngOnInit() {
 
+    }
+
+    onDetails(item: Item) {
+        console.log(item);
+        this.itemDetails = item;
+        document.getElementById('dialogButton').click();
     }
 
     onAdd(item: Item) {

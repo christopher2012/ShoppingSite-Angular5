@@ -1,3 +1,4 @@
+
 var Product = require('../models/product');
 var Category = require('../models/category');
 
@@ -70,36 +71,46 @@ exports.product_update = function(req, res, next) {
 
 exports.product_promo_add = function(req, res, next) {
     console.log(req.body);
+    callbackCounter = 0;
+
     for(var promoProduct of req.body) {
+        updateProduct(promoProduct);        
+    }
+
+    function updateProduct(promoProduct) {
         Product.findById(promoProduct._id, function(err, product) {
             if(err)
                 res.send(err);
 
-            product.oldPrice = product.price;
+            if (!product.promotion)
+                product.oldPrice = product.price;
+
             product.price = promoProduct.price;
             product.promotion = true;
-
-            product.save( function(err) {
-                if(err)
-                    res.send(err);
-                
-            })
+            product.save(callbackCounterSave); 
         })
     }
     
-    res.json({message: "Product updated... "});
+    function callbackCounterSave(err) {
+        if(err)
+            res.send(err);
+        
+        callbackCounter ++;
+        
+        if(callbackCounter === req.body.length) {
+            res.json({message: "Product updated... "});
+        }
+    }
 }
 
 exports.product_promo_del = function(req, res, next) {
 
     Product.update({promotion: true}, {promotion: false, }, {multi: true}, function(err, product) {
-        if(err){
+        if(err)
             res.send(err);
-        }
-        console.log(product);
+        
+        res.json({message: "Product updated... "});
     });
-    
-    res.json({message: "Product updated... "});
 }
 
 exports.product_detail = function(req, res, next) {

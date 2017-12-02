@@ -17,6 +17,7 @@ export class DataService implements OnDestroy {
 
     private itemsUrl = 'http://localhost:8080/api/products';
     private promoUrl = 'http://localhost:8080/api/products/promo';
+    private promoDeleteUrl = 'http://localhost:8080/api/products/promo_del';
     private categoriesUrl = 'http://localhost:8080/api/categories';
     private socket;
     private connection;
@@ -71,6 +72,11 @@ export class DataService implements OnDestroy {
     createPromo(products) {
         const header = new Headers({'Content-Type': 'application/json'});
         return this.http.post(this.promoUrl, products, { headers: header });
+    }
+
+    deletePromo() {
+        const header = new Headers({'Content-Type': 'application/json'});
+        return this.http.post(this.promoDeleteUrl, {}, { headers: header });
     }
 
     getCategoryList() {

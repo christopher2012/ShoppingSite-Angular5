@@ -28,7 +28,8 @@ export class ShopComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.connection = this.dataService.getMessage().subscribe( message => {
-        console.log(message);
+      console.log("######################");
+      console.log(message);
         this.updateItems();
         this.updateCategories();
       }

@@ -30,6 +30,7 @@
         <label for="time">Czas promocji:</label>
         <input type="number" class="form-control" [value]='time' (input)="time = $event.target.value" id="time">
         <button class="btn btn-success btn-success-cust" (click)='refresh("promo")'>Zatwierdź promocję</button>
+        <button class="btn btn-success btn-success-cust" (click)='delete("promo")'>Usuń promocję</button>
     </div>
   </div>
 

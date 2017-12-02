@@ -18,11 +18,24 @@ export class AdminComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getMessage().subscribe(message => {
+      this.productList = [];
+      this.promoProductList = [];
+      this.reloadProducts();
+    });
+    this.reloadProducts();
+  }
+
+  reloadProducts() {
     this.dataService.getItemListOb().subscribe(
       data => {
-        this.productList = data;
-        console.log(data);
-        console.log(this.productList);
+        for (const temp of data) {
+          if (temp.promotion) {
+            this.promoProductList.push(temp);
+          } else {
+            this.productList.push(temp);
+          }
+        }
       }
     );
   }
@@ -34,6 +47,17 @@ export class AdminComponent implements OnInit {
       data => {
         console.log(data);
         this.dataService.sendPromoMessage(type, this.time);
+      }
+    );
+  }
+
+  delete(type: string) {
+    console.log(this.time);
+    console.log(type);
+    this.dataService.deletePromo().subscribe(
+      data => {
+        this.dataService.sendPromoMessage(type, this.time);
+
       }
     );
   }
