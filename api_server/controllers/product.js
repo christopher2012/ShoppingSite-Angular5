@@ -59,6 +59,7 @@ exports.product_update = function(req, res, next) {
             res.send(err);
 
         product.price = req.body.price;
+        product.count = req.body.count;
 
         product.save( function(err) {
             if(err)

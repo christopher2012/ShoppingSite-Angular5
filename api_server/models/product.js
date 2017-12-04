@@ -9,7 +9,8 @@ var ProductSchema = new Schema({
     price: String,
     promotion: { type: Boolean, default: false },
     category: { type: Schema.Types.ObjectId, ref:'Category' },
-    oldPrice: String
+    oldPrice: String,
+    count: { type: Number, default: 0 }
 })
 
 module.exports = mongoose.model( 'Product', ProductSchema );

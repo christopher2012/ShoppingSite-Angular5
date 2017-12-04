@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080; 
 
-var mongoDB = 'mongodb://shop-app:VYai3yzOAO8yWPcxYNuIOF0AayKx39gbHgSONvzPu3E438XrcJVHB2FI5bjUNcEcrWngWHY51oBvptIXGjNx3A==@shop-app.documents.azure.com:10255/?ssl=true';
+var mongoDB = 'mongodb://shop-app:b5f6cMv5YaDuozJzftjskbbJpEOpF3z57MteemZbbpd1lj6Am4nATSMTZyw9ETF6eDNd8X1acEY9SWjRDoy5Gw==@shop-app.documents.azure.com:10255/?ssl=true';
 mongoose.connect(mongoDB, {
     useMongoClient: true
 });

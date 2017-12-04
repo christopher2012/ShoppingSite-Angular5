@@ -14,7 +14,7 @@ export class ItemComponent {
     @Output() onAdd = new EventEmitter<any>();
     @Output() onDetails = new EventEmitter<any>();
 
-    addToCart(event: any) {
+    addToCart() {
         this.onAdd.emit(this.item);
     }
 

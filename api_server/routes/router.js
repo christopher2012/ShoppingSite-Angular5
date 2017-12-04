@@ -58,13 +58,14 @@ router.route('/products').delete(productController.product_delete_all);
 
 router.route('/product/:productID').get(productController.product_detail);
 
-router.route('/product/:productID').patch(productController.product_update);
+router.route('/product/:productID').put(productController.product_update);
 
 router.route('/product/:productID').delete(productController.product_delete);
 
 router.route('/products/promo').post(productController.product_promo_add);
 
 router.route('/products/promo_del').post(productController.product_promo_del);
+
 
 
 

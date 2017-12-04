@@ -1,15 +1,15 @@
-<div class='row' (click)='details()'>
+<div class='row'>
     <div class='col-md-12'>
-        <div class='item-desc'>
-            <div class='image-product col-md-2'><img src='../assets/images/cart.png'></div>
-            <div class='col-md-7'>
+        <div class='item-desc' >
+            <div class='image-product col-md-2'><img src='../assets/images/cart.png' (click)='details()'></div>
+            <div class='col-md-7' (click)='details()'>
                 <h2>{{item.name}}</h2>
                 <h4>{{item.description}}</h4>
                 <h6>{{item.category.name}}</h6>
             </div>
             <div class="col-md-3 right-price">
                 <h3 [ngClass]="{'promo-price' : item.promotion}">{{item.price | number: '1.2-2' | plnCurrency}}</h3>
-                <button class="btn btn-primary" (click)=addToCart()> Dodaj do koszyka</button>
+                <button class="btn btn-primary" (click)=addToCart() [disabled]="item.count == 0"> Dodaj do koszyka</button>
             </div>
         </div>
     </div>

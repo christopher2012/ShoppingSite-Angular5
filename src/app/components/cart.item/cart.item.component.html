@@ -13,9 +13,9 @@
                         </button>
                     </span>
                     <input type="number" min="1" disabled class="form-control input-number input-order"
-                        [value]="cartItem.count">
+                        [value]="cartItem.count" (input)="cartItem.count = $event.target.value">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-success plus-button" [disabled]="" (click)='plus($event)'>
+                        <button type="button" class="btn btn-success plus-button" [disabled]="cartItem.item.count == cartItem.count" (click)='plus($event)'>
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
