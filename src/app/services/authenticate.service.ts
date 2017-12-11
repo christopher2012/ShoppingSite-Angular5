@@ -7,7 +7,7 @@ import {Md5} from 'ts-md5/dist/md5';
 @Injectable()
 export class AuthenticateService implements OnDestroy {
 
-  authenticateUrl = 'http://localhost:8080/api/authenticate';
+  authenticateUrl = '/api/authenticate';
 
   loggedUser: User;
   isLogged = false;

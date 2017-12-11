@@ -8,9 +8,9 @@ import { Order } from '../model/order';
 @Injectable()
 export class OrderService {
 
-  private addressUrl = 'http://localhost:8080/api/address';
-  private poUrl = 'http://localhost:8080/api/po';
-  private polinesUrl = 'http://localhost:8080/api/polines';
+  private addressUrl = '/api/address';
+  private poUrl = '/api/po';
+  private polinesUrl = '/api/polines';
 
   constructor(private http: Http) { }
 

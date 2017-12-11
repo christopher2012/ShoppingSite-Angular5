@@ -15,10 +15,10 @@ import 'rxjs/add/operator/catch';
 export class DataService implements OnDestroy {
     itemList = items;
 
-    private itemsUrl = 'http://localhost:8080/api/products';
-    private promoUrl = 'http://localhost:8080/api/products/promo';
-    private promoDeleteUrl = 'http://localhost:8080/api/products/promo_del';
-    private categoriesUrl = 'http://localhost:8080/api/categories';
+    private itemsUrl = '/api/products';
+    private promoUrl = '/api/products/promo';
+    private promoDeleteUrl = '/products/promo_del';
+    private categoriesUrl = '/api/categories';
     private socket;
     private connection;
 
@@ -47,7 +47,7 @@ export class DataService implements OnDestroy {
 
     getMessage() {
         const observable = new Observable(observer => {
-            this.socket = io('http://localhost:8080');
+            this.socket = io();
             this.socket.on('message', (message) => {
                 observer.next(message.data);
             });

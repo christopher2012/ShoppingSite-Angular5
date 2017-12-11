@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var randtoken = require('rand-token');
 
 exports.user_list = function(req, res, next) {
     
@@ -78,16 +79,17 @@ exports.user_delete = function(req, res, next) {
 
 exports.user_authenticate = function(req, res, next) {
 
-
     console.log(req.body);
     User.findOne({username: req.body.username}).populate("address").exec( function(err, user) {
         if (err)
-            res.send(err);
-            
+            res.send(err);            
         
         if(user !== null && user.password === req.body.password) {
+            user.token = randtoken.generate(16);
             console.log(user);
-            res.json({error: false, message: "Dane użytkownika poprawne", user: user});
+            User.save( function(err) {
+                res.json({error: false, message: "Dane użytkownika poprawne", user: user});
+            });
         } else {
             res.json({error: true, message: "Dane użytkownika niepoprawne"});
         }
